@@ -901,10 +901,6 @@ def get_application_patch_info(os_installation_date):
                     pkg_name = parts[0]
                     version = parts[1]
                     publisher = parts[4] if len(parts) >= 5 else "Snap Store"
-
-                    if should_skip(pkg_name):
-                        continue
-
                     date = os_installation_date
                     path = f"/snap/{pkg_name}/current"
                     signed = True

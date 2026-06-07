@@ -24470,6 +24470,16 @@
     "authority": "Ubuntu APT Repository"
   },
   {
+    "name": "bare",
+    "version": "1.0",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/bare/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
     "name": "betternotes",
     "version": "0.1.2",
     "vendor": "paperhead",
@@ -24500,6 +24510,36 @@
     "authority": "Snap Store"
   },
   {
+    "name": "core18",
+    "version": "20260204",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/core18/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "core22",
+    "version": "20260225",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/core22/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "core24",
+    "version": "20260410",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/core24/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
     "name": "desktop-security-center",
     "version": "0+git.25daa58",
     "vendor": "canonical",
@@ -24515,6 +24555,56 @@
     "vendor": "Canonical",
     "date": "2026-06-07",
     "path": "/snap/firmware-updater/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "gnome-3-28-1804",
+    "version": "3.28.0-19-g98f9e67.98f9e67",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/gnome-3-28-1804/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "gnome-42-2204",
+    "version": "0+git.c1d3d69-sdk0+git.015db9a",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/gnome-42-2204/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "gnome-46-2404",
+    "version": "0+git.f1cd5fa-sdk0+git.ca9c59c",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/gnome-46-2404/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "gtk-common-themes",
+    "version": "0.1-81-g442e511",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/gtk-common-themes/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "mesa-2404",
+    "version": "25.0.7-snap211",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/mesa-2404/current",
     "signed": true,
     "signedBy": "canonical",
     "authority": "Snap Store"
@@ -24545,6 +24635,26 @@
     "vendor": "canonical",
     "date": "2026-06-07",
     "path": "/snap/prompting-client/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "snap-store",
+    "version": "0+git.10310e85",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/snap-store/current",
+    "signed": true,
+    "signedBy": "canonical",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "snapd-desktop-integration",
+    "version": "0.9",
+    "vendor": "canonical",
+    "date": "2026-06-07",
+    "path": "/snap/snapd-desktop-integration/current",
     "signed": true,
     "signedBy": "canonical",
     "authority": "Snap Store"
