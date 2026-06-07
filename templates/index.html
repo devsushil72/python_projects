@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Installed Applications</title>
+
+    <meta http-equiv="refresh" content="500" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            padding: 30px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        .count {
+            color: #666;
+            font-size: 14px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .table-wrapper {
+            max-height: 800px;
+            overflow-y: auto;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ececec;
+        }
+
+        tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        tbody tr:hover {
+            background: #e8f0ff;
+            transition: 0.2s;
+        }
+
+        .vendor {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .version {
+            font-family: monospace;
+        }
+
+        .path {
+            max-width: 450px;
+            word-break: break-all;
+            color: #555;
+            font-size: 13px;
+        }
+
+        .badge {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 15px;
+            color: #777;
+            font-size: 13px;
+        }
+    </style>
+
+    <script>
+        function filterTable() {
+            let input = document.getElementById("searchInput");
+            let filter = input.value.toLowerCase();
+
+            let rows = document.querySelectorAll("tbody tr");
+
+            rows.forEach(row => {
+                row.style.display =
+                    row.innerText.toLowerCase().includes(filter)
+                        ? ""
+                        : "none";
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h2>Installed Applications</h2>
+            <div class="badge">
+                {{ apps|length }} Applications
+            </div>
+        </div>
+
+        <input type="text" id="searchInput" placeholder="Search application, vendor, version..."
+            onkeyup="filterTable()">
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Version</th>
+                        <th>Vendor</th>
+                        <th>Date</th>
+                        <th>Path</th>
+                        <th>Signed</th>
+                        <th>Signed By</th>
+                        <th>Authority</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for app in apps %}
+                    <tr>
+                        <td>{{ app.name }}</td>
+                        <td>{{ app.version }}</td>
+                        <td>{{ app.vendor }}</td>
+                        <td>{{ app.date }}</td>
+                        <td>{{ app.path }}</td>
+                        <td>{{ app.signed }}</td>
+                        <td>{{ app.signedBy }}</td>
+                        <td>{{ app.authority }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div class="footer">
+            Auto-refresh every 5 seconds
+        </div>
+
+    </div>
+
+</body>
+
+</html>
