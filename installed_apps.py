@@ -2,7 +2,7 @@ import subprocess
 import logging
 import re
 import configparser
-from datetime import datetime,date
+import datetime
 import subprocess
 import os
 import re
@@ -156,17 +156,9 @@ def get_application_patch_info(os_installation_date):
         # =========================
         # Programming Languages
         # =========================
-        "python3": "python",
-        "python3.12": "python",
-        "python3.12-minimal": "python",
-        "python3.13": "python",
-        "python3.13-minimal": "python",
-        "python3.14-minimal": "python",
+        
 
-        "libpython3.12": "python",
-        "libpython3.12t64": "python",
-        "libpython3.12-stdlib": "python",
-        "libpython3.12-minimal": "python",
+      
 
         "perl": "perl",
         "perl-base": "perl",
@@ -629,28 +621,73 @@ def get_application_patch_info(os_installation_date):
         name = re.sub(r':\w+$', '', name)  # strip :amd64 arch suffix
         return name
     
+    def get_manually_installed_packages() -> set:
+        """
+        Returns set of package names explicitly installed by user.
+        Packages NOT in extended_states are also manual (installed before
+        apt started tracking, or via dpkg directly).
+        """
+        manual = set()
+        auto = set()
+
+        ext_states = "/var/lib/apt/extended_states"
+
+        if not os.path.exists(ext_states):
+            return manual  # can't determine, return empty → caller treats all as manual
+
+        current_pkg = None
+        current_arch = None
+
+        with open(ext_states, "r", errors="ignore") as f:
+            for line in f:
+                line = line.strip()
+
+                if line.startswith("Package:"):
+                    current_pkg = line.split(":", 1)[1].strip()
+
+                elif line.startswith("Architecture:"):
+                    current_arch = line.split(":", 1)[1].strip()
+
+                elif line.startswith("Auto-Installed:"):
+                    value = line.split(":", 1)[1].strip()
+                    if current_pkg:
+                        if value == "1":
+                            auto.add(current_pkg)
+                        else:
+                            manual.add(current_pkg)
+                    current_pkg = None
+                    current_arch = None
+
+        return manual, auto
+
     def build_path_map() -> dict:
         """
         Read /var/lib/dpkg/info/<pkg>.list files directly — no subprocess.
-        Returns {pkg_name: best_path} — empty string means no meaningful path found.
+        Returns {pkg_name: best_path}
 
         Priority:
-            1. Binary in BIN_DIRS          (/usr/bin/gparted, /usr/sbin/..., etc.)
-            2. Shared library in LIB_DIRS  (/usr/lib/..., /lib/...) — .so files only
-            3. Main executable in OPT_DIRS (/opt/vendor/app/binary)
-            4. Empty string — no path stored (caller should omit the field)
+            1. Binary in BIN_DIRS          (/usr/bin/, /usr/sbin/, etc.)
+            2. Binary in deep LIB_DIRS     (/usr/lib/<pkg>/app — vendor apps like chrome)
+            3. Shared library in LIB_DIRS  (.so files)
+            4. Executable in OPT_DIRS      (/opt/vendor/app/binary)
         """
         BIN_DIRS = (
-            "/usr/bin/", "/usr/sbin/", "/bin/", "/sbin/", "/usr/local/bin/", "/usr/local/sbin/",
+            "/usr/bin/", "/usr/sbin/",
+            "/bin/", "/sbin/",
+            "/usr/local/bin/", "/usr/local/sbin/",
+            "/usr/games/",                          # ← game binaries
+            "/usr/local/games/",
         )
         LIB_DIRS = (
-            "/usr/lib/", "/usr/lib64/", "/lib/", "/lib64/",
+            "/usr/lib/", "/usr/lib64/",
+            "/usr/lib/x86_64-linux-gnu/",           # ← arch-specific lib binaries
+            "/usr/lib/aarch64-linux-gnu/",
+            "/usr/libexec/",                         # ← libexec binaries
+            "/lib/", "/lib64/",
         )
         OPT_DIRS = (
             "/opt/",
         )
-
-        # Paths we never want — skip immediately
         SKIP_PREFIXES = (
             "/usr/share/doc/",
             "/usr/share/man/",
@@ -666,135 +703,106 @@ def get_application_patch_info(os_installation_date):
             "/usr/share/zsh/",
             "/usr/share/bash-completion/",
             "/usr/share/fish/",
+            "/usr/share/perl5/",
+            "/usr/share/python3/",
         )
-
-        # Directories that are useless on their own (not files)
         USELESS = {
-            ".", "/", "/.", "/usr", "/usr/share", "/usr/lib", "/usr/lib64",
-            "/usr/sbin", "/usr/bin", "/bin", "/sbin", "/lib", "/lib64",
-            "/usr/local", "/usr/local/bin", "/usr/local/sbin", "/opt",
+            ".", "/", "/.",
+            "/usr", "/usr/share", "/usr/lib", "/usr/lib64",
+            "/usr/sbin", "/usr/bin", "/bin", "/sbin",
+            "/lib", "/lib64",
+            "/usr/local", "/usr/local/bin", "/usr/local/sbin",
+            "/usr/games", "/usr/local/games",
+            "/opt", "/usr/libexec",
         }
 
         DPKG_INFO_DIR = "/var/lib/dpkg/info"
         path_map = {}
 
         try:
-            for fname in os.listdir(DPKG_INFO_DIR):
-                if not fname.endswith(".list"):
+            for entry in os.scandir(DPKG_INFO_DIR):         # faster than listdir + open
+                if not entry.name.endswith(".list"):
                     continue
 
-                pkg_name = fname[:-5].split(":")[0]
+                pkg_name = entry.name[:-5].split(":")[0]    # strip .list and :amd64
                 best_bin = ""
-                best_lib = ""
+                best_lib_bin = ""                            # deep lib binary e.g. /usr/lib/chrome/chrome
+                best_lib = ""                                # .so file
                 best_opt = ""
 
                 try:
-                    with open(os.path.join(DPKG_INFO_DIR, fname), "r") as fh:
+                    with open(entry.path, "r", errors="ignore") as fh:
                         for line in fh:
                             path = line.strip()
+
                             if not path or path in USELESS:
                                 continue
                             if any(path.startswith(s) for s in SKIP_PREFIXES):
                                 continue
 
-                            # Tier 1: actual binary
-                            if not best_bin and any(path.startswith(b) for b in BIN_DIRS):
+                            # Tier 1: standard binary path — best possible, stop reading
+                            if any(path.startswith(b) for b in BIN_DIRS):
                                 best_bin = path
-                                break  # can't do better than this
+                                break                        # can't do better
 
-                            # Tier 2: shared library (.so file — indicates the package's main artifact)
+                            # Tier 2: deep lib binary (no extension = likely executable)
+                            # e.g. /usr/lib/firefox/firefox, /usr/lib/google-chrome/chrome
+                            if not best_lib_bin and any(path.startswith(l) for l in LIB_DIRS):
+                                basename = os.path.basename(path)
+                                if basename and "." not in basename:  # no extension = executable
+                                    best_lib_bin = path
+                                    continue
+
+                            # Tier 3: shared library (.so file)
                             if not best_lib and any(path.startswith(l) for l in LIB_DIRS):
                                 if ".so" in path:
                                     best_lib = path
+                                    continue
 
-                            # Tier 3: something inside /opt (vendor apps like Chrome)
+                            # Tier 4: /opt executable (must have no extension or known binary ext)
                             if not best_opt and path.startswith("/opt/"):
-                                # Only take actual files, not just /opt/google or /opt/google/chrome
-                                if "." in os.path.basename(path) or os.path.basename(path) == path.split("/")[-1]:
+                                basename = os.path.basename(path)
+                                # skip shallow dirs like /opt/google or /opt/google/chrome/
+                                if basename and path.count("/") >= 3:
                                     best_opt = path
 
                 except (OSError, PermissionError):
                     pass
 
-                # Use the best tier found; store nothing if none found
-                chosen = best_bin or best_lib or best_opt
+                chosen = best_bin or best_lib_bin or best_lib or best_opt
                 if chosen:
                     path_map[pkg_name] = chosen
-                # No entry at all for packages with no meaningful path
-                # (caller should treat missing key as "no path")
 
         except Exception as e:
-            logging.error("build_path_map error: %s", repr(e))
+            print("build_path_map error: %s", repr(e))
 
         return path_map
 
-    def build_desktop_path_map() -> dict:
-        """Parse Exec= from .desktop files — great for GUI apps."""
-        result = {}
-        for fpath in glob.glob("/usr/share/applications/*.desktop"):
-            cp = configparser.RawConfigParser(strict=False, interpolation=None)
-            cp.read(fpath)
+    def get_install_dates_from_fs() -> dict:
+        install_dates = {}
+        dpkg_info_dir = "/var/lib/dpkg/info"
+
+        for entry in os.scandir(dpkg_info_dir):
+            if not entry.name.endswith(".list"):
+                continue
+
+            pkg_name = entry.name[:-5]              # strip ".list"
+            if ":" in pkg_name:
+                pkg_name = pkg_name.split(":")[0]   # strip ":amd64" etc.
+
             try:
-                exec_val = cp.get("Desktop Entry", "Exec")
-                # Strip args like %u %f %F
-                binary = exec_val.split()[0].strip()
-                # Strip env wrappers like env VAR=x /usr/bin/foo
-                if binary == "env":
-                    binary = exec_val.split()[2].strip()
-                name = cp.get("Desktop Entry", "Name", fallback=None)
-                if name and binary.startswith("/"):
-                    result[name.lower()] = binary
-            except (configparser.NoSectionError, configparser.NoOptionError, IndexError):
-                pass
-        return result
+                st = entry.stat()
+                btime = getattr(st, "st_birthtime", None)
+                ts = btime if (btime and btime != 0) else st.st_mtime
 
-    def build_snap_path_map() -> dict:
-        """Read snap package info from snapd's state file — no subprocess."""
-        import json
-        result = {}
-        try:
-            with open("/var/lib/snapd/state.json") as f:
-                state = json.load(f)
-            for snap_id, snap_data in state.get("data", {}).get("snaps", {}).items():
-                name = snap_data.get("name")
-                if name:
-                    # Snap wrappers always live at /snap/bin/<name>
-                    wrapper = f"/snap/bin/{name}"
-                    result[name] = wrapper
-        except (OSError, KeyError, json.JSONDecodeError):
-            pass
-        return result
-
-    def build_combined_path_map() -> dict:
-        dpkg = build_path_map()  # your existing function (fixed)
-        desktop = build_desktop_path_map()
-        snap = build_snap_path_map()
-
-        # Start with dpkg, then let .desktop override where dpkg gave a lib path
-        combined = dict(dpkg)
-        for pkg_name, path in dpkg.items():
-            # If dpkg gave a lib path (.so), check if desktop has a better answer
-            if path and ".so" in path:
-                desktop_hit = desktop.get(pkg_name.lower())
-                if desktop_hit:
-                    combined[pkg_name] = desktop_hit
-
-        # Add snap packages that weren't in dpkg at all
-        for name, path in snap.items():
-            if name not in combined:
-                combined[name] = path
-
-        return combined
-
-    def get_package_date(pkg_name: str, fallback: str) -> str:
-        try:
-            doc_path = f"/usr/share/doc/{pkg_name}"
-            if os.path.exists(doc_path):
-                ts = os.stat(doc_path).st_mtime  # pure syscall — no subprocess
-                return datetime.fromtimestamp(int(ts)).strftime("%d-%m-%Y %H:%M:%S")
-        except Exception:
-            pass
-        return fallback
+                install_dates[pkg_name] = datetime.fromtimestamp(ts).strftime(
+                    "%d-%m-%Y %H:%M:%S"
+                )
+            except ValueError as err:
+                print(f"Value error for {pkg_name}: {err}")
+            except OSError as err:
+                print(f"OS error for {pkg_name}: {err}")                
+        return install_dates
 
     def extract_maintainer_org(maintainer: str) -> str:
         if not maintainer:
@@ -808,6 +816,297 @@ def get_application_patch_info(os_installation_date):
         ).strip().rstrip(',')
         return org
 
+    def parse_snap_list(output: str) -> list:
+        """
+        Parse `snap list` output using header column offsets.
+        Handles variable-width columns correctly.
+        """
+        lines = output.strip().split("\n")
+        if not lines:
+            return []
+
+        # Parse header to get column start positions
+        header = lines[0]
+        columns = ["Name", "Version", "Rev", "Tracking", "Publisher", "Notes"]
+        col_positions = {}
+
+        for col in columns:
+            idx = header.find(col)
+            if idx != -1:
+                col_positions[col] = idx
+
+        snaps = []
+
+        for line in lines[1:]:
+            if not line.strip():
+                continue
+            try:
+                def extract_col(col: str) -> str:
+                    start = col_positions.get(col, -1)
+                    if start == -1:
+                        return ""
+                    # end = start of next column or end of line
+                    next_starts = sorted(
+                        pos for c, pos in col_positions.items()
+                        if pos > start
+                    )
+                    end = next_starts[0] if next_starts else len(line)
+                    return line[start:end].strip()
+
+                snaps.append({
+                    "name":      extract_col("Name"),
+                    "version":   extract_col("Version"),
+                    "rev":       extract_col("Rev"),
+                    "tracking":  extract_col("Tracking"),
+                    "publisher": extract_col("Publisher"),
+                    "notes":     extract_col("Notes"),
+                })
+            except Exception:
+                continue
+
+        return snaps
+
+# Snap Application Collectors
+
+    def extract_snap_version(version: str) -> str:
+        try:
+            version = version.strip()
+
+            if not version:
+                return "1.0"
+
+            # Strip leading 'v' prefix — v10.16.2 → 10.16.2
+            if version.startswith("v") and version[1:2].isdigit():
+                version = version[1:]
+
+            # Git hash only (7-12 hex chars) — keep as is: 8761a556
+            if re.fullmatch(r'[0-9a-f]{7,12}', version):
+                return version
+
+            # Date-based version (8 digits) — keep as is: 20260204
+            if re.fullmatch(r'\d{8}', version):
+                return version
+
+            # 0+git.xxx-sdk0+git.yyy → take only first part: 0+git.xxx
+            if "-sdk" in version:
+                version = version.split("-sdk")[0]
+
+            # semver + git suffix → strip git part
+            # 3.28.0-19-g98f9e67.98f9e67 → 3.28.0
+            # 0.1-81-g442e511            → 0.1
+            version = re.sub(r'-\d+-g[0-9a-f]+.*$', '', version)
+
+            # Strip snap revision suffix: 25.0.7-snap211 → 25.0.7
+            version = re.sub(r'-snap\d+$', '', version)
+
+            # Strip purely numeric debian revision: 151.0.2-1 → 151.0.2
+            version = re.sub(r'-\d+$', '', version)
+
+            return version.strip() or "1.0"
+
+        except Exception:
+            return version
+
+    def get_snap_install_dates(snap_entries: list) -> dict:
+        """
+        Get install date from snap revision directory mtime.
+        Birth time is unsupported on squashfs — mtime is reliable here
+        since snap revision dirs are root-owned and set by snapd at install time.
+        """
+        install_dates = {}
+
+        for entry in snap_entries:
+            pkg_name = entry["name"]
+            rev      = entry["rev"]
+            path     = f"/snap/{pkg_name}/{rev}"
+
+            try:
+                st = os.stat(path)
+                ts = st.st_mtime      # ✅ mtime is correct for squashfs snap mounts
+
+                install_dates[pkg_name] = datetime.fromtimestamp(ts).strftime(
+                    "%d-%m-%Y %H:%M:%S"
+                )
+
+            except ValueError as  err:
+                print(f"error fetching snap installation date : {err}")
+
+        return install_dates
+    
+    def is_git_hash(version: str) -> bool:
+        """Detect pure git hash versions like 8761a556"""
+        return bool(re.fullmatch(r'[0-9a-f]{7,12}', version.strip()))
+
+    # def get_version_from_binary(pkg_name: str) -> str:
+    #     """
+    #     Try common version flags on the binary.
+    #     Binary name = pkg_name in most cases.
+    #     Falls back through flag variations until version found.
+    #     """
+    #     # Special cases where binary name or flag differs from pkg name
+    #     real_user = os.environ.get("SUDO_USER")
+    #     print(real_user)
+    #     SPECIAL_COMMANDS = {
+    #         "code":                ["code", "--version"],
+    #         "canonical-livepatch": ["canonical-livepatch", "version"],
+    #         "snapd":               ["snap", "version"],
+    #            # VSCode family — needs sandbox disabled + temp data dir
+    #         "code":                ["code", "--version"],
+    #         "code-insiders":       ["code-insiders", "--version"],
+
+    #         # Snap tools
+    #         "canonical-livepatch": ["canonical-livepatch", "version"],
+    #         "snapd":               ["snap", "version"],
+
+    #         # Chrome/Chromium family — also needs no-sandbox as root
+    #         "chromium":            ["chromium", "--version", ],
+    #         "google-chrome":       ["google-chrome", "--version"],
+    #     }
+
+    #     # Standard flag variations to try in order
+    #     VERSION_FLAGS = [
+    #         ["--version"],   # most common:  curl --version
+    #     ]
+
+    #     # Use special command if defined
+    #     if pkg_name in SPECIAL_COMMANDS:
+    #         cmds = [SPECIAL_COMMANDS[pkg_name]]
+    #     else:
+    #         # Build commands by combining pkg_name + each flag variation
+    #         cmds = [[pkg_name] + flag for flag in VERSION_FLAGS]
+
+    #     for cmd in cmds:
+    #         print(f"trying command ... {cmd}")
+    #         try:
+    #             result = subprocess.run(
+    #                 cmd, capture_output=True, text=True, timeout=5
+    #             )
+    #             # Check both stdout and stderr (some tools print to stderr e.g. java)
+    #             output = result.stdout or result.stderr
+    #             for line in output.splitlines():
+    #                 line = line.strip()
+    #                 m = re.search(r'(\d+\.\d+[\.\d]*)', line)
+    #                 if m:
+    #                     return m.group(1)
+    #         except  Exception as e:
+    #             print(f"failed command {cmd}: {e}")
+    #     return ""
+
+    def get_version_from_binary(pkg_name: str) -> str:
+        real_user = os.environ.get("SUDO_USER")
+        SPECIAL_COMMANDS = {
+            # VS Code family
+            "code": ["code", "--version"],
+            "code-insiders": ["code-insiders", "--version"],
+
+            # Snap tools
+            "canonical-livepatch": ["canonical-livepatch", "version"],
+            "snapd": ["snap", "version"],
+
+            # Browsers
+            "chromium": ["chromium", "--version"],
+            "google-chrome": ["google-chrome", "--version"],
+
+            # Docker
+            "docker": ["docker", "--version"],
+        }
+
+        VERSION_FLAGS = [
+            ["--version"],
+            ["-v"],
+            ["version"],
+            ["-version"],
+        ]
+
+        if pkg_name in SPECIAL_COMMANDS:
+            cmds = [SPECIAL_COMMANDS[pkg_name]]
+        else:
+            cmds = [[pkg_name] + flag for flag in VERSION_FLAGS]
+
+        for cmd in cmds:
+            try:
+                final_cmd = cmd
+
+                # Run GUI apps as original user instead of root
+                if (
+                    real_user
+                    and pkg_name in {
+                        "code",
+                        "code-insiders",
+                        "chromium",
+                        "google-chrome",
+                    }
+                ):
+                    final_cmd = ["sudo", "-u", real_user] + cmd
+
+                print(f"trying command: {final_cmd}")
+
+                result = subprocess.run(
+                    final_cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=5,
+                )
+
+                output = result.stdout or result.stderr
+
+                print(f"output: {output}")
+
+                for line in output.splitlines():
+                    m = re.search(r'(\d+\.\d+(?:\.\d+)*)', line.strip())
+                    if m:
+                        return m.group(1)
+
+            except Exception as e:
+                print(f"failed command {final_cmd}: {e}")
+
+        return ""
+
+    def is_unresolvable_snap(pkg_name: str) -> bool:
+        """
+        Detect system/runtime snaps that have no binary
+        and no meaningful version — return 1.0 for these.
+        """
+        EXACT = {
+            "bare",
+            "snap-store",
+            "firmware-updater",
+            "snapd-desktop-integration",
+        }
+        PREFIXES = (
+            "core",         # core, core18, core20, core22, core24, core26 ...
+            "gnome-",       # gnome-42-2204, gnome-46-2404 ...
+            "gtk-common-",  # gtk-common-themes
+            "mesa-",        # mesa-2404
+            "kde-",         # kde frameworks
+        )
+
+        return pkg_name in EXACT or any(pkg_name.startswith(p) for p in PREFIXES)
+
+
+    def resolve_snap_version(pkg_name: str, raw_version: str) -> str:
+        """
+        Resolve real version for a snap package.
+
+        Priority:
+            1. Unresolvable snap (runtime/base)  → "1.0"
+            2. Known binary command              → real upstream version
+            3. Clean extract                     → stripped version string
+            4. Fallback                          → "1.0"
+        """
+        # Step 1: system/runtime snaps — no meaningful version exists
+        if is_unresolvable_snap(pkg_name):
+            return "1.0"
+
+        # Step 2: git hash or empty — try binary
+        if is_git_hash(raw_version) or not raw_version.strip():
+            binary_version = get_version_from_binary(pkg_name)
+            if binary_version:
+                return binary_version
+
+        # Step 3: clean whatever snap list gave us
+        return extract_snap_version(raw_version) or "1.0"
+    
     # ─────────────────────────────────────────────────────────────────────────
     # Main logic
     # ─────────────────────────────────────────────────────────────────────────
@@ -816,7 +1115,6 @@ def get_application_patch_info(os_installation_date):
     # STEP 1: Parse dpkg-query to get package list (same as before)
     # ─────────────────────────────────────────────────────────────────────────
     raw_packages =  []  # list of (pkg_name, version, maintainer)
-
     try:
         result = subprocess.run(
             "dpkg-query -W -f='${Package}|${Version}|${Maintainer}\\n'",
@@ -841,39 +1139,42 @@ def get_application_patch_info(os_installation_date):
     # ─────────────────────────────────────────────────────────────────────────
     # STEP 2: ONE batch call to get all binary paths (replaces 1,760 subprocs)
     # ─────────────────────────────────────────────────────────────────────────
-    path_map = build_combined_path_map()
-
-
+    path_map = build_path_map()
+    path_map["cyberauditor-linux-agent"] = "/etc/cyberauditor_linux_agent"
+    package_installation_date = get_install_dates_from_fs()
+    # print(len(package_installation_date))
+    manual, auto = get_manually_installed_packages()
     # ─────────────────────────────────────────────────────────────────────────
     # STEP 3: Process each package — now pure Python, no subprocesses
     # ─────────────────────────────────────────────────────────────────────────
     for pkg_name, version, maintainer in raw_packages:
         try:
+            if pkg_name in auto and pkg_name not in manual:
+                continue
             version_clean = extract_real_version(version)
             path = path_map.get(pkg_name) or path_map.get(pkg_name.lower(), "")  # O(1) dict lookup
-
-            date = get_package_date(pkg_name, os_installation_date)  # os.stat only
+            date=package_installation_date.get(pkg_name) 
 
             signed = True
             signed_by = extract_maintainer_org(maintainer)
             authority = "Ubuntu APT Repository"
             clean_name = clean_package_name(pkg_name)
-            normalized_name = FAMILY_NAME_OVERRIDE.get(clean_name, clean_name)
-            lookup = normalized_name.lower()
-            if lookup in DISPLAY_NAME_OVERRIDE:
-                normalized_name = DISPLAY_NAME_OVERRIDE[lookup]
+            # normalized_name = FAMILY_NAME_OVERRIDE.get(clean_name, clean_name)
+            # lookup = normalized_name.lower()
+            # if lookup in DISPLAY_NAME_OVERRIDE:
+            #     normalized_name = DISPLAY_NAME_OVERRIDE[lookup]
 
-            lookup = normalized_name.lower()
+            # lookup = normalized_name.lower()
             vendor = extract_maintainer_org(maintainer)
-            if lookup in VENDOR_OVERRIDE:
-                vendor = VENDOR_OVERRIDE[lookup]
+            # if lookup in VENDOR_OVERRIDE:
+            #     vendor = VENDOR_OVERRIDE[lookup]
 
             app_obj = {
-                "name": normalized_name,
+                "name": pkg_name,
                 "version": version_clean,
                 "vendor": vendor,
-                "date": date,
-                "path": path,
+                "date": date if date else os_installation_date,
+                "path": path if path else "Not Found",
                 "signed": signed,
                 "signedBy": signed_by,
                 "authority": authority,
@@ -887,85 +1188,78 @@ def get_application_patch_info(os_installation_date):
     # STEP 4: Snap packages — unchanged, but use fallback path helper
     # ─────────────────────────────────────────────────────────────────────────
     try:
+        EXCLUDED_SNAPS = {
+            "bare",
+            "core18",
+            "core20",
+            "core22",
+            "core24",
+            "gnome-3-28-1804",
+            "gnome-3-38-2004",
+            "gnome-42-2204",
+            "gnome-46-2404",
+            "gtk-common-themes",
+            "mesa-2404",
+        }
         snap_result = subprocess.run(
             ["snap", "list"],
             capture_output=True, text=True,
             timeout=TIMEOUT_SUBPROCESS
         )
+        
         if snap_result.returncode == 0:
-            for line in snap_result.stdout.strip().split("\n")[1:]:
+            snap_entries = parse_snap_list(snap_result.stdout)
+            snap_dates    = get_snap_install_dates(snap_entries)
+            for entry in snap_entries:
                 try:
-                    parts = line.split()
-                    if len(parts) < 2:
+                    
+                    pkg_name  = entry["name"]
+                    if pkg_name in EXCLUDED_SNAPS:
                         continue
-                    pkg_name = parts[0]
-                    version = parts[1]
-                    publisher = parts[4] if len(parts) >= 5 else "Snap Store"
-                    date = os_installation_date
-                    path = f"/snap/{pkg_name}/current"
-                    signed = True
+                    version  = resolve_snap_version(pkg_name, entry["version"])
+                    publisher = entry["publisher"] or "Snap Store"
+                    # rest of your existing logic unchanged
+                    path      = f"/snap/{pkg_name}/current"
+                    signed    = True
                     signed_by = extract_maintainer_org(publisher)
                     authority = "Snap Store"
+                    
+                    date= snap_dates.get(pkg_name)
+                    clean_name      = clean_package_name(pkg_name)
+                    # normalized_name = FAMILY_NAME_OVERRIDE.get(clean_name, clean_name)
+                    # lookup          = normalized_name.lower()
 
-                    clean_name = clean_package_name(pkg_name)
-                    normalized_name = FAMILY_NAME_OVERRIDE.get(clean_name, clean_name)
-                    lookup = normalized_name.lower()
-                    if lookup in DISPLAY_NAME_OVERRIDE:
-                        normalized_name = DISPLAY_NAME_OVERRIDE[lookup]
+                    # if lookup in DISPLAY_NAME_OVERRIDE:
+                    #     normalized_name = DISPLAY_NAME_OVERRIDE[lookup]
 
-                    lookup = normalized_name.lower()
+                    # lookup = normalized_name.lower()
                     vendor = extract_maintainer_org(publisher)
-                    if lookup in VENDOR_OVERRIDE:
-                        vendor = VENDOR_OVERRIDE[lookup]
+                    # if lookup in VENDOR_OVERRIDE:
+                    #     vendor = VENDOR_OVERRIDE[lookup]
 
                     app_obj = {
-                        "name": normalized_name,
-                        "version": version,
-                        "vendor": vendor,
-                        "date": date,
-                        "path": path,
-                        "signed": signed,
-                        "signedBy": signed_by,
+                        "name":      clean_name,
+                        "version":   version if version else "1.0",
+                        "vendor":    vendor,
+                        "date":      date if date else os_installation_date,
+                        "path":      path,
+                        "signed":    signed,
+                        "signedBy":  signed_by,
                         "authority": authority,
                     }
                     applications_versions.append(app_obj)
 
                 except Exception as e:
-                    logging.warning("Snap parse error for line %s: %s", line, e)
+                    logging.warning("Snap parse error for %s: %s", entry, e)
 
     except FileNotFoundError:
         logging.info("snap not installed — skipping")
     except Exception as e:
         logging.error("Snap fetch error: %s", repr(e))
 
-    # ─────────────────────────────────────────────────────────────────────────
-    # STEP 5: Deduplication — unchanged
-    # ─────────────────────────────────────────────────────────────────────────
-    seen = {}
-    for app in applications_versions:
-        key = re.sub(r'[^a-z0-9]+', '', app["name"].lower())
-        source_priority = 0 if app.get("authority") == "Ubuntu APT Repository" else 1
-        if key not in seen:
-            app["_priority"] = source_priority
-            seen[key] = app
-        else:
-            if source_priority < seen[key]["_priority"]:
-                app["_priority"] = source_priority
-                seen[key] = app
-
-    deduplicated = list(seen.values())
-    for app in deduplicated:
-        app.pop("_priority", None)
-
-    # ─────────────────────────────────────────────────────────────────────────
-    # STEP 6: Filter & sort — unchanged
-    # ─────────────────────────────────────────────────────────────────────────
-    return deduplicated
+    return applications_versions
 
 data = get_application_patch_info(datetime.now().strftime("%Y-%m-%d"))
-# print("Total Application Found :",len(data))
-# print(json.dumps(data, indent=2))
-# Save JSON (overwrites existing file)
 with open("installed_applications.json", "w", encoding="utf-8") as f:
     json.dump(data, f, indent=2, ensure_ascii=False)
 print("JSON saved to installed_applications.json")

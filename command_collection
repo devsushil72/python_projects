@@ -1,0 +1,33 @@
+zgrep "cyberauditor-linux-agent" /var/log/dpkg.log*   //check log to installation_date  
+
+
+ stat /var/lib/dpkg/info/cyberauditor-linux-agent.list
+  File: /var/lib/dpkg/info/cyberauditor-linux-agent.list
+  size: 185691    	Blocks: 368        IO Block: 4096   regular file
+Device: 8,1	Inode: 12192126    Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-06-08 09:42:30.231250624 +0530
+Modify: 2026-06-05 13:53:47.484621094 +0530
+Change: 2026-06-05 13:53:47.486066730 +0530
+Birth: 2026-06-05 13:53:47.484234799 +0530
+
+ 
+
+ # 1. Does the file exist?
+ls -la /usr/bin/aclocal-1.18
+
+# 2. Is it actually executable?
+file /usr/bin/aclocal-1.18
+
+# 3. Does it belong to automake package?
+dpkg -S /usr/bin/aclocal-1.18
+
+
+
+
+
+No need for dpkg -L subprocess — you're already reading the same .list files in build_path_map. The issue is your tier/priority logic is too strict and missing valid paths.
+
+What dpkg -L does internally
+dpkg -L curl  =  cat /var/lib/dpkg/info/curl.list
+Exact same data — no need for subprocess.

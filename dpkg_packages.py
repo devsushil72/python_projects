@@ -1,8 +1,11 @@
+from jinja2 import filters
 import subprocess
 import json
 import gzip
 import os
 import re
+import datetime
+
 TIMEOUT_SUBPROCESS=10
 def get_dpkg_packages():
     result = subprocess.run(
@@ -16,21 +19,24 @@ def get_dpkg_packages():
         timeout=TIMEOUT_SUBPROCESS
     )
 
+    manual, auto = get_manually_installed_packages()
+
     packages = {}
 
     for line in result.stdout.splitlines():
         try:
             name, version, maintainer = line.split("|", 2)
-
+            if name in auto and name not in manual:
+                continue
             packages[name] = {
                 "name": name,
                 "version": version,
                 "vendor": maintainer,
                 "installation_date": None,
-                "path" :None,
-                "signed": None,
-                "signedBy": None,
-                "authority": None,
+                "path" :"",
+                "signed": "",
+                "signedBy": "",
+                "authority": "",
                 "source": "apt"
             }
 
@@ -38,47 +44,6 @@ def get_dpkg_packages():
             continue
 
     return packages
-
-INSTALL_RE = re.compile(
-    r"^(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}:\d{2})\s+install\s+([^:]+)"
-)
-
-
-def get_install_dates():
-    install_dates = {}
-
-    files = []
-
-    if os.path.exists("/var/log/dpkg.log"):
-        files.append("/var/log/dpkg.log")
-
-    for file in os.listdir("/var/log"):
-        if file.startswith("dpkg.log."):
-
-            path = f"/var/log/{file}"
-
-            try:
-                if path.endswith(".gz"):
-                    fp = gzip.open(path, "rt", errors="ignore")
-                else:
-                    fp = open(path, "r", errors="ignore")
-
-                with fp:
-                    for line in fp:
-                        m = INSTALL_RE.match(line)
-
-                        if not m:
-                            continue
-
-                        ts, pkg = m.groups()
-
-                        if pkg not in install_dates:
-                            install_dates[pkg] = ts
-
-            except Exception:
-                pass
-
-    return install_dates
 
 ORIGIN_RE = re.compile(r"o=([^,]+)")
 
@@ -155,58 +120,201 @@ def get_snap_packages():
     except Exception:
         return {}
 
-PATH_PRIORITY = (
-    "/opt/",
-    "/usr/bin/",
-    "/usr/sbin/",
-    "/snap/bin/"
-)
 
-def get_installation_path(package_name):
+def get_manually_installed_packages() -> set:
+    """
+    Returns set of package names explicitly installed by user.
+    Packages NOT in extended_states are also manual (installed before
+    apt started tracking, or via dpkg directly).
+    """
+    manual = set()
+    auto = set()
+
+    ext_states = "/var/lib/apt/extended_states"
+
+    if not os.path.exists(ext_states):
+        return manual  # can't determine, return empty → caller treats all as manual
+
+    current_pkg = None
+    current_arch = None
+
+    with open(ext_states, "r", errors="ignore") as f:
+        for line in f:
+            line = line.strip()
+
+            if line.startswith("Package:"):
+                current_pkg = line.split(":", 1)[1].strip()
+
+            elif line.startswith("Architecture:"):
+                current_arch = line.split(":", 1)[1].strip()
+
+            elif line.startswith("Auto-Installed:"):
+                value = line.split(":", 1)[1].strip()
+                if current_pkg:
+                    if value == "1":
+                        auto.add(current_pkg)
+                    else:
+                        manual.add(current_pkg)
+                current_pkg = None
+                current_arch = None
+
+    return manual, auto
+
+
+def build_path_map() -> dict:
+    """
+    Read /var/lib/dpkg/info/<pkg>.list files directly — no subprocess.
+    Returns {pkg_name: best_path}
+
+    Priority:
+        1. Binary in BIN_DIRS          (/usr/bin/, /usr/sbin/, etc.)
+        2. Binary in deep LIB_DIRS     (/usr/lib/<pkg>/app — vendor apps like chrome)
+        3. Shared library in LIB_DIRS  (.so files)
+        4. Executable in OPT_DIRS      (/opt/vendor/app/binary)
+    """
+    BIN_DIRS = (
+        "/usr/bin/", "/usr/sbin/",
+        "/bin/", "/sbin/",
+        "/usr/local/bin/", "/usr/local/sbin/",
+    )
+    LIB_DIRS = (
+        "/usr/lib/", "/usr/lib64/",
+        "/lib/", "/lib64/",
+    )
+    OPT_DIRS = (
+        "/opt/",
+    )
+    SKIP_PREFIXES = (
+        "/usr/share/doc/",
+        "/usr/share/man/",
+        "/usr/share/locale/",
+        "/usr/share/lintian/",
+        "/usr/share/bug/",
+        "/usr/share/examples/",
+        "/usr/share/help/",
+        "/usr/share/pixmaps/",
+        "/usr/share/icons/",
+        "/usr/share/applications/",
+        "/usr/share/metainfo/",
+        "/usr/share/zsh/",
+        "/usr/share/bash-completion/",
+        "/usr/share/fish/",
+    )
+    USELESS = {
+        ".", "/", "/.",
+        "/usr", "/usr/share", "/usr/lib", "/usr/lib64",
+        "/usr/sbin", "/usr/bin", "/bin", "/sbin",
+        "/lib", "/lib64",
+        "/usr/local", "/usr/local/bin", "/usr/local/sbin",
+        "/opt",
+    }
+
+    DPKG_INFO_DIR = "/var/lib/dpkg/info"
+    path_map = {}
 
     try:
-        result = subprocess.run(
-            ["dpkg", "-L", package_name],
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
+        for entry in os.scandir(DPKG_INFO_DIR):         # faster than listdir + open
+            if not entry.name.endswith(".list"):
+                continue
 
-        paths = result.stdout.splitlines()
+            pkg_name = entry.name[:-5].split(":")[0]    # strip .list and :amd64
+            best_bin = ""
+            best_lib_bin = ""                            # deep lib binary e.g. /usr/lib/chrome/chrome
+            best_lib = ""                                # .so file
+            best_opt = ""
 
-        for prefix in PATH_PRIORITY:
-            for path in paths:
+            try:
+                with open(entry.path, "r", errors="ignore") as fh:
+                    for line in fh:
+                        path = line.strip()
 
-                if not path.startswith(prefix):
-                    continue
+                        if not path or path in USELESS:
+                            continue
+                        if any(path.startswith(s) for s in SKIP_PREFIXES):
+                            continue
 
-                if os.path.isfile(path) and os.access(path, os.X_OK):
-                    return path
+                        # Tier 1: standard binary path — best possible, stop reading
+                        if any(path.startswith(b) for b in BIN_DIRS):
+                            best_bin = path
+                            break                        # can't do better
 
-        return None
+                        # Tier 2: deep lib binary (no extension = likely executable)
+                        # e.g. /usr/lib/firefox/firefox, /usr/lib/google-chrome/chrome
+                        if not best_lib_bin and any(path.startswith(l) for l in LIB_DIRS):
+                            basename = os.path.basename(path)
+                            if basename and "." not in basename:  # no extension = executable
+                                best_lib_bin = path
+                                continue
 
-    except Exception:
-        return None
+                        # Tier 3: shared library (.so file)
+                        if not best_lib and any(path.startswith(l) for l in LIB_DIRS):
+                            if ".so" in path:
+                                best_lib = path
+                                continue
+
+                        # Tier 4: /opt executable (must have no extension or known binary ext)
+                        if not best_opt and path.startswith("/opt/"):
+                            basename = os.path.basename(path)
+                            # skip shallow dirs like /opt/google or /opt/google/chrome/
+                            if basename and path.count("/") >= 3:
+                                best_opt = path
+
+            except (OSError, PermissionError):
+                pass
+
+            chosen = best_bin or best_lib_bin or best_lib or best_opt
+            if chosen:
+                path_map[pkg_name] = chosen
+
+    except Exception as e:
+        print("build_path_map error: %s", repr(e))
+
+    return path_map
+
+def get_install_dates_from_fs() -> dict:
+    install_dates = {}
+    dpkg_info_dir = "/var/lib/dpkg/info"
+
+    for entry in os.scandir(dpkg_info_dir):
+        if not entry.name.endswith(".list"):
+            continue
+
+        pkg_name = entry.name[:-5]              # strip ".list"
+        if ":" in pkg_name:
+            pkg_name = pkg_name.split(":")[0]   # strip ":amd64" etc.
+
+        try:
+            st = entry.stat()
+            btime = getattr(st, "st_birthtime", None)
+            ts = btime if (btime and btime != 0) else st.st_mtime
+
+            install_dates[pkg_name] = datetime.datetime.fromtimestamp(ts).strftime(
+                "%d-%m-%Y %H:%M:%S"
+            )
+        except Exception:
+            continue
+
+    return install_dates
+
 
 def build_inventory():
 
     packages = get_dpkg_packages()
 
-    install_dates = get_install_dates()
-    # Install dates 
+    install_dates = get_install_dates_from_fs()
+    manual, auto  = get_manually_installed_packages()
     for pkg, ts in install_dates.items():
 
         if pkg in packages:
             packages[pkg]["installation_date"] = ts
-    for pkg in packages:
-        packages[pkg]["path"] = get_installation_path(pkg)
-
-
-    #     trust = get_package_authority(pkg)
-
-    #     packages[pkg].update(trust)
 
     packages.update(get_snap_packages())
+
+    path_map = build_path_map()
+    for pkg, path in path_map.items():
+        if pkg in packages:
+            packages[pkg]["path"] = path
+
 
     return list(packages.values())
 
