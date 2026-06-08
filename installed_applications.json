@@ -1,2873 +1,795 @@
 [
   {
-    "name": "adwaita-qt",
-    "version": "1.4.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:49",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "aide",
-    "version": "0.19.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:49",
-    "path": "/usr/bin/aide",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "aide-common",
-    "version": "0.19.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:50",
-    "path": "/usr/sbin/aideinit",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "alsa-base",
-    "version": "1.0.25",
-    "vendor": "Ubuntu Core Developers",
-    "date": "23-04-2026 11:38:51",
-    "path": "/sbin/alsa",
-    "signed": true,
-    "signedBy": "Ubuntu Core Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "alsa-utils",
-    "version": "1.2.15.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:52",
-    "path": "/usr/bin/aconnect",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "anacron",
-    "version": "2.3",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:34",
-    "path": "/usr/sbin/anacron",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
     "name": "antigravity",
-    "version": "1.23.2",
-    "vendor": "Google",
-    "date": "03-06-2026 14:11:14",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Google",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "apport-gtk",
-    "version": "2.34.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:43:30",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "apt-transport-https",
+    "path": "Not Found"
   },
   {
-    "name": "appstream",
-    "version": "1.1.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:02",
-    "path": "/usr/bin/appstreamcli",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "apt-config-icons-hidpi",
-    "version": "1.1.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:53",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "at-spi2-core",
-    "version": "2.60.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:28:53",
-    "path": "/usr/lib/systemd",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "audispd-plugins",
-    "version": "4.1.2",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:03:38",
-    "path": "/usr/sbin/audisp-remote",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "auditd",
-    "version": "4.1.2",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:03:37",
-    "path": "/usr/bin/aulast",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "avahi-daemon",
-    "version": "0.8",
-    "vendor": "Ubuntu Developers",
-    "date": "14-05-2026 09:51:41",
-    "path": "/usr/sbin/avahi-daemon",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "baobab",
-    "version": "49.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:53",
-    "path": "/usr/bin/baobab",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "bc",
-    "version": "1.07.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:20",
-    "path": "/usr/bin/bc",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "bluez",
-    "version": "5.85",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:34:40",
-    "path": "/usr/bin/bluemoon",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "bluez-cups",
-    "version": "5.85",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:34:40",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "brave-browser",
-    "version": "1.89.141",
-    "vendor": "Brave Software",
-    "date": "23-04-2026 09:45:07",
-    "path": "/usr/bin/brave-browser-stable",
-    "signed": true,
-    "signedBy": "Brave Software",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "bridge-utils",
-    "version": "1.7.1",
-    "vendor": "Ubuntu Developers",
-    "date": "24-04-2026 14:12:36",
-    "path": "/usr/sbin/brctl",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "brltty",
-    "version": "6.7",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:34:59",
-    "path": "/usr/bin/brltty",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "awscli",
+    "path": "/usr/bin/aws"
   },
   {
     "name": "bsdutils",
-    "version": "2.41.3",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:30:01",
-    "path": "/usr/bin/renice",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/renice"
   },
   {
     "name": "btop",
-    "version": "1.4.6",
-    "vendor": "Ubuntu Developers",
-    "date": "13-05-2026 14:43:42",
-    "path": "/usr/bin/btop",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/btop"
   },
   {
     "name": "build-essential",
-    "version": "12.12ubuntu2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 12:05:22",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "ca-certificates",
-    "version": "20260223",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:31:13",
-    "path": "/usr/sbin/update-ca-certificates",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/sbin/update-ca-certificates"
   },
   {
-    "name": "cloud-init",
-    "version": "26.1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:51:58",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "cheese",
+    "path": "/usr/bin/cheese"
   },
   {
-    "name": "cups",
-    "version": "2.4.16",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:26",
-    "path": "/usr/sbin/cupsfilter",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "code",
+    "path": "Not Found"
   },
   {
-    "name": "cups-bsd",
-    "version": "2.4.16",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:25",
-    "path": "/usr/bin/lpq",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "containerd.io",
+    "path": "/usr/bin/containerd"
   },
   {
-    "name": "cups-client",
-    "version": "2.4.16",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:25",
-    "path": "/usr/bin/cancel",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "cups-filters",
-    "version": "2.0.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:24",
-    "path": "/usr/bin/driverless-fax",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "copyq",
+    "path": "/usr/bin/copyq"
   },
   {
     "name": "curl",
-    "version": "8.18.0",
-    "vendor": "Ubuntu Developers",
-    "date": "06-05-2026 09:53:57",
-    "path": "/usr/bin/curl",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/curl"
   },
   {
-    "name": "cyberauditor-linux-agent",
-    "version": "26.6.1",
-    "vendor": "Ashok Samal",
-    "date": "08-06-2026 12:38:56",
-    "path": "/etc/cyberauditor_linux_agent",
-    "signed": true,
-    "signedBy": "Ashok Samal",
-    "authority": "Ubuntu APT Repository"
+    "name": "cursor",
+    "path": "Not Found"
   },
   {
     "name": "dash",
-    "version": "0.5.12",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:33",
-    "path": "/usr/bin/dash",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "debhelper",
-    "version": "13.31ubuntu1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:35:12",
-    "path": "/usr/bin/dh",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/dash"
   },
   {
     "name": "debsig-verify",
-    "version": "0.34",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:01",
-    "path": "/usr/bin/debsig-verify",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "debsigs",
-    "version": "0.2.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:01",
-    "path": "/usr/bin/debsigs",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "devscripts",
-    "version": "2.26.7",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:19:15",
-    "path": "/usr/bin/annotate-output",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "dh-make",
-    "version": "2.202503build1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:02",
-    "path": "/usr/bin/dh_make",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/debsig-verify"
   },
   {
     "name": "diffutils",
-    "version": "3.12",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:34",
-    "path": "/usr/bin/cmp",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "dirmngr",
-    "version": "2.4.8",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:50",
-    "path": "/usr/bin/dirmngr",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/cmp"
   },
   {
     "name": "dkms",
-    "version": "3.2.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 12:05:23",
-    "path": "/usr/sbin/dkms",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/sbin/dkms"
   },
   {
-    "name": "dmz-cursor-theme",
-    "version": "0.4.5.3build1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:03",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "docker-buildx-plugin",
+    "path": "/usr/libexec/docker"
   },
   {
-    "name": "docker.io",
-    "version": "29.1.3",
-    "vendor": "Ubuntu Developers",
-    "date": "06-05-2026 09:54:05",
-    "path": "/usr/bin/docker",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "docker-ce",
+    "path": "/usr/bin/docker-proxy"
   },
   {
-    "name": "dpkg-dev",
-    "version": "1.23.7ubuntu1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:26:56",
-    "path": "/usr/bin/dpkg-architecture",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "docker-ce-cli",
+    "path": "/usr/bin/docker"
+  },
+  {
+    "name": "docker-compose-plugin",
+    "path": "/usr/libexec/docker"
+  },
+  {
+    "name": "docker-desktop",
+    "path": "/usr/bin/docker-credential-desktop"
   },
   {
     "name": "efibootmgr",
-    "version": "18",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:07",
-    "path": "/usr/bin/efibootdump",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "eog",
-    "version": "49.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:59",
-    "path": "/usr/bin/eog",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "evince",
-    "version": "49",
-    "vendor": "Ubuntu Developers",
-    "date": "29-05-2026 10:14:35",
-    "path": "/usr/bin/evince",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "fakeroot",
-    "version": "1.37.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:10",
-    "path": "/usr/bin/faked-sysv",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/efibootdump"
   },
   {
     "name": "findutils",
-    "version": "4.10.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:34",
-    "path": "/usr/bin/find",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "firefox",
-    "version": "1snap1",
-    "vendor": "Ubuntu Mozilla Team",
-    "date": "23-04-2026 11:38:30",
-    "path": "/usr/bin/firefox",
-    "signed": true,
-    "signedBy": "Ubuntu Mozilla Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/find"
   },
   {
     "name": "flatpak",
-    "version": "1.16.6",
-    "vendor": "Ubuntu Developers",
-    "date": "08-06-2026 14:31:45",
-    "path": "/usr/bin/flatpak",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/flatpak"
   },
   {
-    "name": "fontconfig",
-    "version": "2.17.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:09",
-    "path": "/usr/bin/fc-cache",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-crosextra-caladea",
+    "path": "Not Found"
   },
   {
-    "name": "fonts-dejavu-core",
-    "version": "2.37",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:33:55",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-crosextra-carlito",
+    "path": "Not Found"
   },
   {
-    "name": "fonts-firacode",
-    "version": "6.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:11",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-dejavu",
+    "path": "Not Found"
   },
   {
     "name": "fonts-liberation",
-    "version": "2.1.5",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:33:55",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "fonts-noto-cjk",
-    "version": "20240730",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:12",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-liberation-sans-narrow",
+    "path": "Not Found"
   },
   {
-    "name": "fonts-noto-color-emoji",
-    "version": "2.051",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:12",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-linuxlibertine",
+    "path": "Not Found"
   },
   {
     "name": "fonts-noto-core",
-    "version": "20201225",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:20",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "fonts-ubuntu",
-    "version": "0.869",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:43",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-noto-extra",
+    "path": "Not Found"
   },
   {
-    "name": "foomatic-db-compressed-ppds",
-    "version": "20250819",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:12",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-noto-mono",
+    "path": "Not Found"
   },
   {
-    "name": "fwupd",
-    "version": "2.1.1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:52:58",
-    "path": "/usr/bin/dbxtool",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-noto-ui-core",
+    "path": "Not Found"
   },
   {
-    "name": "fwupd-signed",
-    "version": "1.55",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:12",
-    "path": "/usr/libexec/fwupd",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "fonts-sil-gentium-basic",
+    "path": "Not Found"
   },
   {
-    "name": "gamemode",
-    "version": "1.8.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:13",
-    "path": "/usr/games/gamemode-simulate-game",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gcc",
-    "version": "15.2.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:41",
-    "path": "/usr/bin/c89-gcc",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gdm3",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:39:40",
-    "path": "/usr/bin/gdm-config",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gedit",
-    "version": "48.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:58",
-    "path": "/usr/bin/gedit",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ghostscript",
-    "version": "10.06.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:22",
-    "path": "/usr/bin/dvipdf",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gir1.2-gmenu-3.0",
-    "version": "3.38.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:42",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "gdb",
+    "path": "/usr/bin/gcore"
   },
   {
     "name": "git",
-    "version": "2.54.0",
-    "vendor": "Jonathan Nieder",
-    "date": "23-04-2026 09:45:16",
-    "path": "/usr/bin/git",
-    "signed": true,
-    "signedBy": "Jonathan Nieder",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/git"
   },
   {
-    "name": "gnome-accessibility-themes",
-    "version": "3.28",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:18",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-bluetooth-sendto",
-    "version": "47.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:18",
-    "path": "/usr/bin/bluetooth-sendto",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-browser-connector",
-    "version": "42.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:28",
-    "path": "/usr/bin/gnome-browser-connector",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-calculator",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:37:05",
-    "path": "/usr/bin/gcalccmd",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-characters",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:06:26",
-    "path": "/usr/bin/gnome-characters",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-clocks",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:48:30",
-    "path": "/usr/bin/gnome-clocks",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-console",
-    "version": "49.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:33",
-    "path": "/usr/bin/kgx",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-control-center",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:15:51",
-    "path": "/usr/bin/gnome-control-center",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-disk-utility",
-    "version": "46.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:17",
-    "path": "/usr/bin/gnome-disk-image-mounter",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-font-viewer",
-    "version": "49.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:20",
-    "path": "/usr/bin/gnome-font-viewer",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-initial-setup",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:51:31",
-    "path": "/usr/lib/systemd",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-keyring",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:53:53",
-    "path": "/usr/bin/gnome-keyring-3",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-logs",
-    "version": "49.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:22",
-    "path": "/usr/bin/gnome-logs",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-menus",
-    "version": "3.38.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:07",
-    "path": "/usr/sbin/gnome-menus-blacklist",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-power-manager",
-    "version": "43.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:22",
-    "path": "/usr/bin/gnome-power-statistics",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-remote-desktop",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:53:40",
-    "path": "/usr/bin/grdctl",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-session-canberra",
-    "version": "0.30",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:23",
-    "path": "/usr/bin/canberra-gtk-play",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-settings-daemon",
-    "version": "50.0",
-    "vendor": "Ubuntu Desktop Team",
-    "date": "15-05-2026 11:38:26",
-    "path": "/usr/lib/gnome-settings-daemon-50",
-    "signed": true,
-    "signedBy": "Ubuntu Desktop Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-shell",
-    "version": "50.1",
-    "vendor": "Ubuntu Developers",
-    "date": "19-05-2026 16:47:48",
-    "path": "/usr/bin/gnome-extensions",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-shell-extension-manager",
-    "version": "0.6.5",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:23",
-    "path": "/usr/bin/extension-manager",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-shell-extensions",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:32:27",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-software-plugin-flatpak",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "08-06-2026 14:33:00",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-system-monitor",
-    "version": "49.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:24",
-    "path": "/usr/bin/gnome-system-monitor",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-terminal",
-    "version": "3.58.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:32",
-    "path": "/usr/bin/gnome-terminal",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gnome-text-editor",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:27:27",
-    "path": "/usr/bin/gnome-text-editor",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "gnome-shell-extension-desktop-icons-ng",
+    "path": "Not Found"
   },
   {
     "name": "gnome-tweaks",
-    "version": "49.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:25",
-    "path": "/usr/bin/gnome-tweaks",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/gnome-tweaks"
+  },
+  {
+    "name": "gnupg",
+    "path": "Not Found"
   },
   {
     "name": "google-chrome-stable",
-    "version": "148.0.7778.178",
-    "vendor": "Chrome Linux Team",
-    "date": "21-05-2026 10:11:16",
-    "path": "/usr/bin/google-chrome-stable",
-    "signed": true,
-    "signedBy": "Chrome Linux Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/google-chrome-stable"
   },
   {
-    "name": "gparted",
-    "version": "1.8.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:35:39",
-    "path": "/usr/sbin/gparted",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gpg-agent",
-    "version": "2.4.8",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:50",
-    "path": "/usr/bin/gpg-agent",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "gradle",
+    "path": "/usr/bin/gradle"
   },
   {
     "name": "grep",
-    "version": "3.12",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:35",
-    "path": "/usr/bin/egrep",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/egrep"
   },
   {
     "name": "grub-efi-amd64",
-    "version": "2.14",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:32:46",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "grub-efi-amd64-signed",
-    "version": "1.215",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:32:46",
-    "path": "/usr/lib/grub",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gsettings-ubuntu-schemas",
-    "version": "0.0.7",
-    "vendor": "Ubuntu Desktop Team",
-    "date": "23-04-2026 11:39:27",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Desktop Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gstreamer1.0-alsa",
-    "version": "1.28.2",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:31:00",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gstreamer1.0-packagekit",
-    "version": "1.3.4",
-    "vendor": "Ubuntu Developers",
-    "date": "29-04-2026 10:41:22",
-    "path": "/usr/libexec/pk-gstreamer-install",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gstreamer1.0-plugins-base-apps",
-    "version": "1.28.2",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:31:00",
-    "path": "/usr/bin/gst-device-monitor-1.0",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gtk2-engines-murrine",
-    "version": "0.98.2",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:35",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "gvfs-fuse",
-    "version": "1.60.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:41:51",
-    "path": "/usr/lib/gvfs",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/grub"
   },
   {
     "name": "gzip",
-    "version": "1.14",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:36",
-    "path": "/usr/bin/gunzip",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/gunzip"
   },
   {
     "name": "hostname",
-    "version": "3.25build1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:37",
-    "path": "/usr/bin/hostname",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/hostname"
   },
   {
-    "name": "hplip",
-    "version": "3.24.4",
-    "vendor": "Ubuntu Developers",
-    "date": "24-04-2026 14:46:00",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ibus",
-    "version": "1.5.34",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:59:37",
-    "path": "/usr/bin/ibus",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ibus-gtk",
-    "version": "1.5.34",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:59:39",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ibus-gtk3",
-    "version": "1.5.34",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:59:39",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ibus-table",
-    "version": "1.17.16",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:38",
-    "path": "/usr/bin/ibus-table-createdb",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "htop",
+    "path": "/usr/bin/htop"
   },
   {
     "name": "ibus-table-cangjie-big",
-    "version": "1.8.14",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:38",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "ibus-table-cangjie3",
-    "version": "1.8.14",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:38",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "ibus-table-cangjie5",
-    "version": "1.8.14",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:38",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "im-config",
-    "version": "0.62",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:09:24",
-    "path": "/usr/bin/im-config",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "init",
-    "version": "1.69",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:35:46",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "inputattach",
-    "version": "1.8.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:57",
-    "path": "/usr/bin/inputattach",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "kerneloops",
-    "version": "0.12",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:21:00",
-    "path": "/usr/bin/kerneloops-submit",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "keyboxd",
-    "version": "2.4.4",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:49",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
+  },
+  {
+    "name": "kwayland-data",
+    "path": "Not Found"
+  },
+  {
+    "name": "kwayland-integration",
+    "path": "Not Found"
   },
   {
     "name": "language-pack-en",
-    "version": "26.04",
-    "vendor": "Language pack maintainers",
-    "date": "15-05-2026 11:39:08",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Language pack maintainers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "language-pack-en-base",
-    "version": "26.04",
-    "vendor": "Language pack maintainers",
-    "date": "15-05-2026 11:39:09",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Language pack maintainers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "language-pack-gnome-en",
-    "version": "26.04",
-    "vendor": "Language pack maintainers",
-    "date": "15-05-2026 12:21:41",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Language pack maintainers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "language-pack-gnome-en-base",
-    "version": "26.04",
-    "vendor": "Language pack maintainers",
-    "date": "15-05-2026 12:21:41",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Language pack maintainers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "language-selector-common",
-    "version": "0.228build1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:53",
-    "path": "/usr/bin/check-language-support",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libasound2-plugins",
+    "path": "Not Found"
   },
   {
-    "name": "language-selector-gnome",
-    "version": "0.228build1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:53",
-    "path": "/usr/bin/gnome-language-selector",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libcanberra-gtk3-0",
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
-    "name": "laptop-detect",
-    "version": "0.16",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:39",
-    "path": "/usr/bin/laptop-detect",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libadwaita-1-0",
-    "version": "1.9.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:15:44",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libatk-adaptor",
-    "version": "2.60.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:28:53",
-    "path": "/usr/lib/gnome-settings-daemon-3.0/gtk-modules",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libcanberra-gtk3-0t64",
+    "path": "Not Found"
   },
   {
     "name": "libchewing3",
-    "version": "0.11.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:41",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
     "name": "libchewing3-data",
-    "version": "0.11.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:40",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libcrypt-dev",
-    "version": "4.5.1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:32:42",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "libfuse2t64",
-    "version": "2.9.9",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:45",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
-    "name": "libglib2.0-bin",
-    "version": "2.88.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:31:34",
-    "path": "/usr/bin/gapplication",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libglib2.0-dev-bin",
+    "path": "/usr/bin/gi-compile-repository"
+  },
+  {
+    "name": "libgtk2.0-0t64",
+    "path": "Not Found"
+  },
+  {
+    "name": "libgtk2.0-common",
+    "path": "Not Found"
+  },
+  {
+    "name": "libkf5coreaddons-data",
+    "path": "Not Found"
+  },
+  {
+    "name": "libkf5windowsystem-data",
+    "path": "Not Found"
+  },
+  {
+    "name": "liblzf1",
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
     "name": "libm17n-0",
-    "version": "1.8.6",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:52",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libmarisa0",
-    "version": "0.2.6",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:20:58",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libnotify-bin",
-    "version": "0.8.8",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:53",
-    "path": "/usr/bin/notify-send",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libnss-mdns",
-    "version": "0.15.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:54",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
     "name": "libopencc-data",
-    "version": "1.1.9",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:17:28",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "libopencc1.1",
-    "version": "1.1.9",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:17:28",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
     "name": "libotf1",
-    "version": "0.9.16",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:51",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libpam-fprintd",
-    "version": "1.94.5",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:56",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libpam-gnome-keyring",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:53:54",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "libpam-sss",
-    "version": "2.12.0",
-    "vendor": "Ubuntu Developers",
-    "date": "03-06-2026 10:35:06",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
     "name": "libpinyin-data",
-    "version": "2.10.3",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:55",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
     "name": "libpinyin15",
-    "version": "2.10.3",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:55",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/x86_64-linux-gnu"
   },
   {
-    "name": "libproxy1-plugin-gsettings",
-    "version": "0.5.4",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:21:05",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-base",
+    "path": "Not Found"
   },
   {
-    "name": "libproxy1-plugin-networkmanager",
-    "version": "0.5.4",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:21:05",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-calc",
+    "path": "/usr/bin/localc"
   },
   {
-    "name": "libpython3.12-minimal",
-    "version": "3.12.3",
-    "vendor": "Ubuntu Core Developers",
-    "date": "19-05-2026 12:44:13",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Core Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-core",
+    "path": "/usr/lib/libreoffice"
   },
   {
-    "name": "libpython3.13-minimal",
-    "version": "3.13.12",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:33:47",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-draw",
+    "path": "/usr/bin/lodraw"
   },
   {
-    "name": "libreoffice",
-    "version": "26.2.3.2",
-    "vendor": "Ubuntu Developers",
-    "date": "03-06-2026 10:34:16",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-gnome",
+    "path": "/usr/lib/libreoffice"
   },
   {
-    "name": "libsane-hpaio",
-    "version": "3.24.4",
-    "vendor": "Ubuntu Developers",
-    "date": "01-05-2026 09:55:53",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-impress",
+    "path": "/usr/bin/loimpress"
   },
   {
-    "name": "libsasl2-modules",
-    "version": "2.1.28",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:57",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-java-common",
+    "path": "/usr/lib/libreoffice"
   },
   {
-    "name": "libspa-0.2-bluetooth",
-    "version": "1.6.2",
-    "vendor": "Ubuntu Developers",
-    "date": "19-05-2026 16:47:49",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-math",
+    "path": "/usr/bin/lomath"
   },
   {
-    "name": "libtss2-fapi1t64",
-    "version": "4.1.3",
-    "vendor": "Mathieu Trudel-Lapierre",
-    "date": "15-05-2026 12:34:34",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Mathieu Trudel-Lapierre",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-nlpsolver",
+    "path": "/usr/lib/libreoffice"
   },
   {
-    "name": "libu2f-udev",
-    "version": "1.1.10",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:21:05",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-report-builder",
+    "path": "Not Found"
   },
   {
-    "name": "libvirt-clients",
-    "version": "12.0.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:30:10",
-    "path": "/usr/bin/virsh",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-report-builder-bin",
+    "path": "Not Found"
   },
   {
-    "name": "libvirt-daemon-system",
-    "version": "12.0.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:30:12",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-script-provider-bsh",
+    "path": "/usr/lib/libreoffice"
   },
   {
-    "name": "libwmf0.2-7-gtk",
-    "version": "0.2.13",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:21:05",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-script-provider-js",
+    "path": "/usr/lib/libreoffice"
   },
   {
-    "name": "lintian",
-    "version": "2.129.0ubuntu2",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:19:51",
-    "path": "/usr/bin/lintian",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "libreoffice-script-provider-python",
+    "path": "/usr/lib/libreoffice"
+  },
+  {
+    "name": "libreoffice-sdbc-firebird",
+    "path": "Not Found"
+  },
+  {
+    "name": "libreoffice-sdbc-hsqldb",
+    "path": "Not Found"
+  },
+  {
+    "name": "libreoffice-sdbc-mysql",
+    "path": "Not Found"
+  },
+  {
+    "name": "libreoffice-sdbc-postgresql",
+    "path": "Not Found"
+  },
+  {
+    "name": "libreoffice-wiki-publisher",
+    "path": "/usr/lib/libreoffice"
+  },
+  {
+    "name": "libreoffice-writer",
+    "path": "/usr/bin/loweb"
+  },
+  {
+    "name": "libxml2-utils",
+    "path": "/usr/bin/xmlcatalog"
   },
   {
     "name": "linux-generic",
-    "version": "7.0.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "04-06-2026 09:53:21",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "linux-generic-hwe-24.04",
-    "version": "7.0.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "04-06-2026 09:53:27",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "linux-headers-6.17.0-14-generic",
-    "version": "6.17.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "13-02-2026 17:09:02",
-    "path": "/lib/modules",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-image-6.11.0-17-generic",
+    "path": "Not Found"
   },
   {
-    "name": "linux-headers-6.19.0-9-generic",
-    "version": "6.19.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "23-04-2026 12:05:28",
-    "path": "/lib/modules",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-image-6.11.0-29-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-image-6.14.0-29-generic",
+    "path": "Not Found"
   },
   {
     "name": "linux-image-6.17.0-14-generic",
-    "version": "6.17.0",
-    "vendor": "Canonical Kernel Team",
-    "date": "07-04-2026 10:11:33",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Canonical Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "linux-image-6.17.0-19-generic",
-    "version": "6.17.0",
-    "vendor": "Canonical Kernel Team",
-    "date": "22-04-2026 09:48:18",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Canonical Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "linux-image-6.17.0-20-generic",
-    "version": "6.17.0",
-    "vendor": "Canonical Kernel Team",
-    "date": "24-04-2026 09:51:52",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Canonical Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-modules-6.11.0-17-generic",
+    "path": "/lib/modules"
   },
   {
-    "name": "linux-image-6.19.0-9-generic",
-    "version": "6.19.0",
-    "vendor": "Canonical Kernel Team",
-    "date": "20-05-2026 10:52:43",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Canonical Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-modules-6.11.0-29-generic",
+    "path": "Not Found"
   },
   {
-    "name": "linux-image-7.0.0-14-generic",
-    "version": "7.0.0",
-    "vendor": "Canonical Kernel Team",
-    "date": "04-06-2026 09:53:59",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Canonical Kernel Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "linux-main-modules-zfs-7.0.0-14-generic",
-    "version": "7.0.0",
-    "vendor": "Canonical Kernel Team",
-    "date": "04-06-2026 09:53:54",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Canonical Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-modules-6.14.0-29-generic",
+    "path": "/lib/modules"
   },
   {
     "name": "linux-modules-6.17.0-14-generic",
-    "version": "6.17.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "07-04-2026 10:11:35",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "linux-modules-6.17.0-19-generic",
-    "version": "6.17.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "22-04-2026 09:48:19",
-    "path": "/lib/modules",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "linux-modules-6.17.0-20-generic",
-    "version": "6.17.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "24-04-2026 09:51:55",
-    "path": "/lib/modules",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-modules-extra-6.11.0-17-generic",
+    "path": "Not Found"
   },
   {
-    "name": "linux-modules-6.19.0-9-generic",
-    "version": "6.19.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "20-05-2026 10:52:45",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-modules-extra-6.11.0-29-generic",
+    "path": "Not Found"
   },
   {
-    "name": "linux-modules-7.0.0-14-generic",
-    "version": "7.0.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "04-06-2026 09:54:01",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-modules-extra-6.14.0-29-generic",
+    "path": "Not Found"
   },
   {
     "name": "linux-modules-extra-6.17.0-14-generic",
-    "version": "6.17.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "07-04-2026 10:11:30",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "linux-modules-extra-6.17.0-19-generic",
-    "version": "6.17.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "22-04-2026 09:48:10",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "linux-modules-extra-6.17.0-20-generic",
-    "version": "6.17.0",
-    "vendor": "Ubuntu Kernel Team",
-    "date": "24-04-2026 09:51:54",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Kernel Team",
-    "authority": "Ubuntu APT Repository"
+    "name": "linux-modules-nvidia-550-6.11.0-17-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-modules-nvidia-550-6.11.0-29-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-modules-nvidia-580-6.17.0-14-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-modules-nvidia-580-6.17.0-19-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-modules-nvidia-580-6.17.0-22-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-objects-nvidia-550-6.11.0-17-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-objects-nvidia-550-6.11.0-29-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-objects-nvidia-580-6.14.0-37-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-objects-nvidia-580-6.17.0-14-generic",
+    "path": "Not Found"
+  },
+  {
+    "name": "linux-objects-nvidia-580-6.17.0-19-generic",
+    "path": "/lib/modules"
+  },
+  {
+    "name": "linux-objects-nvidia-580-6.17.0-22-generic",
+    "path": "Not Found"
   },
   {
     "name": "login",
-    "version": "4.16.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:30:01",
-    "path": "/usr/bin/login",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/login"
   },
   {
     "name": "m17n-db",
-    "version": "1.8.10",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:51",
-    "path": "/usr/bin/m17n-db",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/m17n-db"
   },
   {
-    "name": "make",
-    "version": "4.4.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:03",
-    "path": "/usr/bin/make",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "maven",
+    "path": "Not Found"
   },
   {
     "name": "mc",
-    "version": "4.8.33",
-    "vendor": "Ubuntu Developers",
-    "date": "04-05-2026 18:19:39",
-    "path": "/usr/bin/mc",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/mc"
   },
   {
-    "name": "memtest86+",
-    "version": "8.00",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:20",
-    "path": "/usr/lib/memtest86+",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "microsoft-edge-stable",
+    "path": "Not Found"
+  },
+  {
+    "name": "microsoft-online-apps",
+    "path": "Not Found"
   },
   {
     "name": "mongodb-compass",
-    "version": "1.49.7",
-    "vendor": "MongoDB",
-    "date": "20-05-2026 11:43:24",
-    "path": "/usr/bin/mongodb-compass",
-    "signed": true,
-    "signedBy": "MongoDB",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/mongodb-compass"
   },
   {
-    "name": "mousetweaks",
-    "version": "3.32.0",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:21:07",
-    "path": "/usr/bin/mousetweaks",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "mongodb-mongosh",
+    "path": "/usr/bin/mongosh"
   },
   {
-    "name": "nautilus",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:05:52",
-    "path": "/usr/bin/nautilus",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "nautilus-sendto",
-    "version": "3.8.6",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:21",
-    "path": "/usr/bin/nautilus-sendto",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "mongodb-org",
+    "path": "Not Found"
   },
   {
     "name": "ncurses-base",
-    "version": "6.6",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:35:49",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "ncurses-bin",
-    "version": "6.6",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:37",
-    "path": "/usr/bin/clear",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/clear"
+  },
+  {
+    "name": "neovim",
+    "path": "/usr/bin/nvim"
   },
   {
     "name": "net-tools",
-    "version": "2.10",
-    "vendor": "Ubuntu Developers",
-    "date": "21-05-2026 11:09:51",
-    "path": "/usr/bin/netstat",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "network-manager",
-    "version": "1.54.3",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:31:22",
-    "path": "/usr/bin/nm-online",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "network-manager-config-connectivity-ubuntu",
-    "version": "1.54.3",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:31:23",
-    "path": "/usr/lib/NetworkManager",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "network-manager-openvpn-gnome",
-    "version": "1.12.5",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:03:09",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "network-manager-pptp-gnome",
-    "version": "1.2.12",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:27",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/netstat"
   },
   {
     "name": "node-is-typedarray",
-    "version": "1.0.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:34:46",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "node-typedarray-to-buffer",
-    "version": "4.0.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:33:03",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
+  },
+  {
+    "name": "nodejs",
+    "path": "/usr/bin/node"
   },
   {
     "name": "npm",
-    "version": "9.2.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:15:17",
-    "path": "/usr/bin/arborist",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/arborist"
+  },
+  {
+    "name": "ntfs-3g",
+    "path": "/usr/bin/lowntfs-3g"
+  },
+  {
+    "name": "nvidia-driver-550",
+    "path": "Not Found"
+  },
+  {
+    "name": "nvidia-kernel-common-550",
+    "path": "Not Found"
   },
   {
     "name": "openjdk-21-jdk",
-    "version": "21.0.11",
-    "vendor": "OpenJDK Team",
-    "date": "29-05-2026 10:14:15",
-    "path": "/usr/lib/jvm",
-    "signed": true,
-    "signedBy": "OpenJDK Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/jvm"
   },
   {
-    "name": "openprinting-ppds",
-    "version": "20250819",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:23",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "openjdk-21-jre",
+    "path": "/usr/lib/jvm"
   },
   {
-    "name": "orca",
-    "version": "50.1.2",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:31:05",
-    "path": "/usr/bin/orca",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "pavucontrol",
+    "path": "/usr/bin/pavucontrol"
   },
   {
-    "name": "packagekit",
-    "version": "1.3.4",
-    "vendor": "Ubuntu Developers",
-    "date": "29-04-2026 10:41:22",
-    "path": "/usr/bin/pkgcli",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "pgadmin4-desktop",
+    "path": "Not Found"
   },
   {
-    "name": "pcmciautils",
-    "version": "018",
-    "vendor": "Colin Watson",
-    "date": "23-04-2026 11:40:26",
-    "path": "/usr/sbin/pccardctl",
-    "signed": true,
-    "signedBy": "Colin Watson",
-    "authority": "Ubuntu APT Repository"
+    "name": "postgresql",
+    "path": "Not Found"
   },
   {
-    "name": "pcscd",
-    "version": "2.4.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:28",
-    "path": "/usr/sbin/pcscd",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "postgresql-common",
+    "path": "/usr/bin/pg_backupcluster"
   },
   {
-    "name": "pipewire-pulse",
-    "version": "1.6.2",
-    "vendor": "Ubuntu Developers",
-    "date": "19-05-2026 16:47:49",
-    "path": "/usr/bin/pipewire-pulse",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "postgresql-common-dev",
+    "path": "Not Found"
   },
   {
-    "name": "plymouth-theme-spinner",
-    "version": "24.004.60",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:28:57",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "power-profiles-daemon",
+    "path": "Not Found"
   },
   {
-    "name": "policykit-desktop-privileges",
-    "version": "0.22build1",
-    "vendor": "Ubuntu Core Developers",
-    "date": "23-04-2026 11:40:26",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Core Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "proton-mail",
+    "path": "/usr/bin/proton-mail"
   },
   {
-    "name": "printer-driver-brlaser",
-    "version": "6.2.8",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:27",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "proton-vpn-daemon",
+    "path": "/usr/lib/python3"
   },
   {
-    "name": "printer-driver-c2esp",
-    "version": "27",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:27",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "protonvpn-beta-release",
+    "path": "Not Found"
   },
   {
-    "name": "printer-driver-foo2zjs",
-    "version": "20200505dfsg0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:27",
-    "path": "/usr/bin/arm2hpdl",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "pulseaudio-utils",
+    "path": "/usr/bin/pa-info"
   },
   {
-    "name": "printer-driver-m2300w",
-    "version": "0.51",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:27",
-    "path": "/usr/bin/m2300w",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "python-is-python3",
+    "path": "/usr/bin/pydoc"
   },
   {
-    "name": "printer-driver-min12xxw",
-    "version": "0.0.9",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:27",
-    "path": "/usr/bin/esc-m",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "printer-driver-pnm2ppa",
-    "version": "1.13",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:28",
-    "path": "/usr/bin/calibrate_ppa",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "printer-driver-ptouch",
-    "version": "1.7.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:28",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "printer-driver-pxljr",
-    "version": "1.4",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:28",
-    "path": "/usr/bin/ijs_pxljr",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "printer-driver-sag-gdi",
-    "version": "0.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:28",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "printer-driver-splix",
-    "version": "2.0.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:28",
-    "path": "/usr/lib/cups",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "python3-aiohttp",
-    "version": "3.13.3",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:04:41",
-    "path": "/usr/lib/python3",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "python3-flask",
-    "version": "3.1.3",
-    "vendor": "Ubuntu Developers",
-    "date": "08-06-2026 10:17:54",
-    "path": "/usr/bin/flask",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "python3",
+    "path": "/usr/bin/pdb3"
   },
   {
     "name": "python3-netifaces",
-    "version": "0.11.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:22:13",
-    "path": "/usr/lib/python3",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/python3"
   },
   {
     "name": "python3-pip",
-    "version": "25.1.1",
-    "vendor": "Ubuntu Developers",
-    "date": "05-06-2026 10:23:26",
-    "path": "/usr/bin/pip",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "python3-psutil",
-    "version": "7.1.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:25",
-    "path": "/usr/lib/python3",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/pip"
   },
   {
     "name": "python3-pycryptodome",
-    "version": "3.20.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:32",
-    "path": "/usr/lib/python3",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/lib/python3"
   },
   {
-    "name": "python3-requests",
-    "version": "2.32.5",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:58",
-    "path": "/usr/lib/python3",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "python3-tk",
-    "version": "3.14.3",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:27:14",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "python3.12",
-    "version": "3.12.13",
-    "vendor": "Matthias Klose",
-    "date": "19-05-2026 12:44:14",
-    "path": "/usr/bin/pydoc3.12",
-    "signed": true,
-    "signedBy": "Matthias Klose",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "python3.12-dev",
-    "version": "3.12.13",
-    "vendor": "Matthias Klose",
-    "date": "19-05-2026 12:44:14",
-    "path": "/usr/bin/python3.12-config",
-    "signed": true,
-    "signedBy": "Matthias Klose",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "python3.12-tk",
-    "version": "3.12.13",
-    "vendor": "Matthias Klose",
-    "date": "19-05-2026 12:47:49",
-    "path": "/usr/lib/python3.12/lib-dynload",
-    "signed": true,
-    "signedBy": "Matthias Klose",
-    "authority": "Ubuntu APT Repository"
+    "name": "python3-uno",
+    "path": "/usr/lib/libreoffice"
   },
   {
     "name": "python3.12-venv",
-    "version": "3.12.13",
-    "vendor": "Matthias Klose",
-    "date": "19-05-2026 12:44:14",
-    "path": "/usr/lib/python3.12/ensurepip",
-    "signed": true,
-    "signedBy": "Matthias Klose",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
-    "name": "python3.13-minimal",
-    "version": "3.13.12",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:33:47",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "qemu-block-extra",
+    "path": "Not Found"
   },
   {
-    "name": "python3.13-venv",
-    "version": "3.13.12",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:32:32",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "qemu-system-common",
+    "path": "Not Found"
   },
   {
     "name": "qemu-system-x86",
-    "version": "10.2.1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:30:15",
-    "path": "/usr/bin/kvm-spice",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "qemu-utils",
-    "version": "10.2.1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:30:13",
-    "path": "/usr/bin/qemu-img",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "remmina",
-    "version": "1.4.40",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:34:19",
-    "path": "/usr/bin/remmina",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "remmina-plugin-rdp",
-    "version": "1.4.40",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:34:19",
-    "path": "/usr/lib/x86_64-linux-gnu",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "rfkill",
-    "version": "2.41.3",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:29:56",
-    "path": "/usr/sbin/rfkill",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "sassc",
-    "version": "3.6.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:35",
-    "path": "/usr/bin/sassc",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "seahorse",
-    "version": "47.0.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:35",
-    "path": "/usr/bin/seahorse",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "session-migration",
-    "version": "0.3.9build2",
-    "vendor": "Didier Roche",
-    "date": "15-05-2026 12:32:48",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Didier Roche",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/sassc"
   },
   {
     "name": "shim-signed",
-    "version": "1.59",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:32:47",
-    "path": "/usr/sbin/update-secureboot-policy",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/sbin/update-secureboot-policy"
+  },
+  {
+    "name": "slack-desktop",
+    "path": "/usr/bin/slack"
   },
   {
     "name": "snapd",
-    "version": "2.74.1",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:09:07",
-    "path": "/usr/bin/snap",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/snap"
   },
   {
     "name": "software-properties-common",
-    "version": "0.120",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:37:41",
-    "path": "/usr/bin/add-apt-repository",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/add-apt-repository"
   },
   {
-    "name": "software-properties-gtk",
-    "version": "0.120",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:37:42",
-    "path": "/usr/bin/software-properties-gtk",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "stripe",
+    "path": "/usr/bin/stripe"
   },
   {
-    "name": "speech-dispatcher",
-    "version": "0.12.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:24",
-    "path": "/usr/bin/spd-say",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "systemd-resolved",
+    "path": "/usr/bin/resolvectl"
   },
   {
-    "name": "spice-vdagent",
-    "version": "0.23.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:38:33",
-    "path": "/usr/bin/spice-vdagent",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "tlp",
+    "path": "/usr/bin/bluetooth"
   },
   {
-    "name": "swtpm",
-    "version": "0.10.1",
-    "vendor": "Ubuntu Developers",
-    "date": "12-05-2026 17:46:02",
-    "path": "/usr/bin/swtpm",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "tracker",
+    "path": "Not Found"
   },
   {
-    "name": "swtpm-tools",
-    "version": "0.10.1",
-    "vendor": "Ubuntu Developers",
-    "date": "12-05-2026 17:46:02",
-    "path": "/usr/bin/swtpm_bios",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "tracker-extract",
+    "path": "Not Found"
   },
   {
-    "name": "systemd-oomd",
-    "version": "259.5",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:31:43",
-    "path": "/usr/bin/oomctl",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "tracker-miner-fs",
+    "path": "Not Found"
   },
   {
-    "name": "ubuntu-docs",
-    "version": "26.04.1",
-    "vendor": "Ubuntu Documentation Team",
-    "date": "23-04-2026 11:39:26",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Documentation Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ubuntu-drivers-common",
-    "version": "0.10.9",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:18:32",
-    "path": "/sbin/u-d-c-print-pci-ids",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "ubuntu-desktop-minimal",
+    "path": "Not Found"
   },
   {
     "name": "ubuntu-minimal",
-    "version": "1.570",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:42:15",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ubuntu-release-upgrader-gtk",
-    "version": "26.04.18",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:46:38",
-    "path": "/usr/lib/ubuntu-release-upgrader",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ubuntu-report",
-    "version": "1.7.3ubuntu4",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:39",
-    "path": "/usr/bin/ubuntu-report",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ubuntu-restricted-addons",
-    "version": "32",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:31:25",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ubuntu-session",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "19-05-2026 16:47:50",
-    "path": "/usr/lib/systemd",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "ubuntu-settings",
-    "version": "26.04.6",
-    "vendor": "Ubuntu Desktop Team",
-    "date": "23-04-2026 11:40:39",
-    "path": "/usr/lib/netplan",
-    "signed": true,
-    "signedBy": "Ubuntu Desktop Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "ubuntu-standard",
-    "version": "1.570",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:42:15",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "ubuntu-wallpapers",
-    "version": "26.04.2",
-    "vendor": "Ubuntu Artwork Team",
-    "date": "23-04-2026 11:36:45",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Artwork Team",
-    "authority": "Ubuntu APT Repository"
+    "path": "Not Found"
   },
   {
     "name": "unzip",
-    "version": "6.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:09",
-    "path": "/usr/bin/funzip",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/funzip"
   },
   {
-    "name": "update-manager",
-    "version": "26.04.5",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 11:53:15",
-    "path": "/usr/bin/update-manager",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "vim",
+    "path": "/usr/bin/vim.basic"
   },
   {
-    "name": "update-notifier",
-    "version": "3.207",
-    "vendor": "Michael Vogt",
-    "date": "15-05-2026 11:37:33",
-    "path": "/usr/bin/update-notifier",
-    "signed": true,
-    "signedBy": "Michael Vogt",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "virt-manager",
-    "version": "5.1.0",
-    "vendor": "Ubuntu Developers",
-    "date": "12-05-2026 17:46:03",
-    "path": "/usr/bin/virt-manager",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "virtualbox",
+    "path": "Not Found"
   },
   {
     "name": "virtualbox-7.2",
-    "version": "7.2.8",
-    "vendor": "Oracle",
-    "date": "23-04-2026 12:13:55",
-    "path": "/usr/bin/VBox",
-    "signed": true,
-    "signedBy": "Oracle",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/VBox"
   },
   {
-    "name": "virtualbox-guest-x11",
-    "version": "7.2.6",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:01:30",
-    "path": "/usr/bin/VBoxClient",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "virtualbox-ext-pack",
+    "path": "Not Found"
   },
   {
-    "name": "vite",
-    "version": "1.4",
-    "vendor": "Ubuntu Developers",
-    "date": "24-04-2026 15:24:06",
-    "path": "/usr/bin/vite",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "wget",
+    "path": "/usr/bin/wget"
   },
   {
-    "name": "warp-terminal",
-    "version": "0.2026.05.18.05.32.stable.02",
-    "vendor": "Warp Linux Maintainers",
-    "date": "19-05-2026 16:48:34",
-    "path": "/opt/warpdotdev/warp-terminal",
-    "signed": true,
-    "signedBy": "Warp Linux Maintainers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "wbritish",
-    "version": "2020.12.07",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:40",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "whoopsie",
-    "version": "0.2.82ubuntu",
-    "vendor": "Florent 'Skia' Jacquet",
-    "date": "15-05-2026 12:03:57",
-    "path": "/usr/bin/whoopsie",
-    "signed": true,
-    "signedBy": "Florent 'Skia' Jacquet",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "wireless-tools",
-    "version": "30",
-    "vendor": "Ubuntu Developers",
-    "date": "05-08-2025 22:21:11",
-    "path": "/usr/sbin/iwconfig",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "wireplumber",
-    "version": "0.5.13",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:19:06",
-    "path": "/usr/bin/wireplumber",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "woeusb-frontend-wxgtk",
-    "version": "3.3.1",
-    "vendor": "tomx3",
-    "date": "09-04-2026 13:38:01",
-    "path": "/usr/bin/woeusb",
-    "signed": true,
-    "signedBy": "tomx3",
-    "authority": "Ubuntu APT Repository"
+    "name": "wireguard",
+    "path": "Not Found"
   },
   {
     "name": "wpasupplicant",
-    "version": "2.11",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:34:28",
-    "path": "/usr/bin/wpa_passphrase",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "path": "/usr/bin/wpa_passphrase"
   },
   {
-    "name": "xcursor-themes",
-    "version": "1.0.6",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:41",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "name": "xserver-xorg-input-synaptics",
+    "path": "/usr/bin/synclient"
   },
   {
-    "name": "xdg-desktop-portal-gnome",
-    "version": "50.0",
-    "vendor": "Ubuntu Developers",
-    "date": "15-05-2026 12:15:37",
-    "path": "/usr/lib/systemd",
+    "name": "betternotes",
+    "version": "0.1.2",
+    "vendor": "paperhead",
+    "date": "16-03-2026 14:27:34",
+    "path": "/snap/betternotes/current",
     "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "signedBy": "paperhead",
+    "authority": "Snap Store"
   },
   {
-    "name": "xdg-user-dirs",
-    "version": "0.19",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:12",
-    "path": "/usr/bin/xdg-user-dir",
+    "name": "brave",
+    "version": "1.91.168",
+    "vendor": "brave",
+    "date": "04-06-2026 21:25:38",
+    "path": "/snap/brave/current",
     "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "xdg-user-dirs-gtk",
-    "version": "0.16",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:36:12",
-    "path": "/usr/bin/xdg-user-dirs-gtk-update",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "xdg-utils",
-    "version": "1.2.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:42",
-    "path": "/usr/bin/xdg-desktop-icon",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "xkb-data",
-    "version": "2.46",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:37:18",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "xorg",
-    "version": "7.7",
-    "vendor": "Ubuntu X-SWAT",
-    "date": "23-04-2026 11:40:43",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu X-SWAT",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "yaru-theme-gnome-shell",
-    "version": "26.04.5.1ubuntu",
-    "vendor": "Ubuntu Desktop Team",
-    "date": "15-05-2026 11:41:26",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Desktop Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "yaru-theme-gtk",
-    "version": "26.04.5.1ubuntu",
-    "vendor": "Ubuntu Desktop Team",
-    "date": "15-05-2026 11:41:29",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Desktop Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "yaru-theme-icon",
-    "version": "26.04.5.1ubuntu",
-    "vendor": "Ubuntu Desktop Team",
-    "date": "15-05-2026 11:41:38",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Desktop Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "yaru-theme-sound",
-    "version": "26.04.5.1ubuntu",
-    "vendor": "Ubuntu Desktop Team",
-    "date": "15-05-2026 11:41:40",
-    "path": "Not Found",
-    "signed": true,
-    "signedBy": "Ubuntu Desktop Team",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "yelp",
-    "version": "49.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:39:26",
-    "path": "/usr/bin/yelp",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "zenity",
-    "version": "4.2.1",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:55",
-    "path": "/usr/bin/zenity",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
-  },
-  {
-    "name": "zip",
-    "version": "3.0",
-    "vendor": "Ubuntu Developers",
-    "date": "23-04-2026 11:40:55",
-    "path": "/usr/bin/zip",
-    "signed": true,
-    "signedBy": "Ubuntu Developers",
-    "authority": "Ubuntu APT Repository"
+    "signedBy": "brave",
+    "authority": "Snap Store"
   },
   {
     "name": "canonical-livepatch",
@@ -2875,26 +797,6 @@
     "vendor": "canonical",
     "date": "29-04-2026 19:17:30",
     "path": "/snap/canonical-livepatch/current",
-    "signed": true,
-    "signedBy": "canonical",
-    "authority": "Snap Store"
-  },
-  {
-    "name": "code",
-    "version": "1.122.1",
-    "vendor": "vscode",
-    "date": "29-05-2026 13:22:18",
-    "path": "/snap/code/current",
-    "signed": true,
-    "signedBy": "vscode",
-    "authority": "Snap Store"
-  },
-  {
-    "name": "docker",
-    "version": "29.3.1",
-    "vendor": "canonical",
-    "date": "01-04-2026 21:26:09",
-    "path": "/snap/docker/current",
     "signed": true,
     "signedBy": "canonical",
     "authority": "Snap Store"
@@ -2927,6 +829,26 @@
     "path": "/snap/insomnia/current",
     "signed": true,
     "signedBy": "getinsomnia",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "pgadmin4",
+    "version": "9.15",
+    "vendor": "brunoenten",
+    "date": "11-05-2026 20:44:56",
+    "path": "/snap/pgadmin4/current",
+    "signed": true,
+    "signedBy": "brunoenten",
+    "authority": "Snap Store"
+  },
+  {
+    "name": "postman",
+    "version": "11.71.7",
+    "vendor": "postman-",
+    "date": "14-11-2025 16:41:10",
+    "path": "/snap/postman/current",
+    "signed": true,
+    "signedBy": "postman-",
     "authority": "Snap Store"
   },
   {

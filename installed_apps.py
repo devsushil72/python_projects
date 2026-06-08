@@ -1,602 +1,16 @@
 import subprocess
 import logging
 import re
-import configparser
 import datetime
 import subprocess
 import os
 import re
 import logging
 import json
-import glob
 
 TIMEOUT_SUBPROCESS=10
 from datetime import datetime
 def get_application_patch_info(os_installation_date):
-
-    _SKIP_PATTERNS_RAW = [
-        r'^adwaita-', r'-icon-theme$', r'^fonts-', r'^ttf-', r'^xfonts-',
-        r'font$', r'fonts$', r'^language-pack', r'^locales', r'-doc$',
-        r'-docs$', r'^core\d+$', r'^bare$', r'^gnome-\d+-\d+$',
-        r'^gtk-common-themes$', r'-dev$', r'^wallpapers-', r'-wallpapers$',
-        r'^gnome-backgrounds', r'^yaru', r'^sound-theme',
-        r'^lib.*-dev$', r'^.*-dbgsym$', r'^.*-dbg$', r'^python3-gdb$',
-        r'^hunspell-', r'^aspell-', r'^mythes-', r'^wamerican', r'^wbritish',
-        r'^wallpapers-', r'-wallpapers$', r'^gnome-backgrounds', r'^yaru',
-        r'^sound-theme', r'^linux-headers', r'^linux-tools', r'^linux-modules',
-        r'^linux-image', r'^linux-firmware', r'^linux-generic', r'^linux-base$',
-        r'^gir1\.', r'^glib-networking', r'^gtk-update-icon-cache$',
-        r'^shared-mime-info$', r'^xdg-', r'^iso-codes$',
-        r'-common$', r'-data$', r'-locale$', r'-l10n$', r'-translations$',
-        r'^gnome-\d', r'^mesa-', r'^snap-store$', r'^snapd-desktop-integration$',
-        r'-plugin-', r'-keyring$',
-        r'^libreoffice-(base|calc|core|draw|gnome|gtk3|impress|math|writer).*',
-        r'^libreoffice-script-provider-.*', r'^libreoffice-sdbc-.*',
-        r'^libreoffice-style-.*', r'^libreoffice-uiconfig-.*',
-        r'^libreoffice-nlpsolver$', r'^libreoffice-wiki-publisher$',
-        r'^libreoffice-report-builder$', r'^libreoffice-report-builder-bin$',
-        r'^python-babel-localedata$', r'^python3-.*',
-        r'^qemu-block-extra$', r'^qemu-system-gui$',
-        r'^qemu-system-modules-opengl$', r'^qemu-system-modules-spice$',
-        r'^libvirt-daemon-.*',
-        r'^cpp-\d+-x86-64-linux-gnu$', r'^cpp-x86-64-linux-gnu$',
-        r'^g\+\+-\d+-x86-64-linux-gnu$', r'^gcc-\d+-base$',
-        r'^gcc-\d+-x86-64-linux-gnu$',
-        r'^node-', r'^krb5-locales$', r'^aspell$', r'^hunspell-',
-        r'^language-selector-', r'^lib.*java$', r'^ure-java$',
-        r'^gnome-session-', r'^gnome-shell-extension-',
-        r'^gnome-browser-connector$', r'^gnome-bluetooth-sendto$',
-        r'^gnome-menus$', r'^printer-driver-', r'^pipewire-(bin|pulse)$',
-        r'^aptdaemon$', r'^dh-', r'^debhelper$', r'^fakeroot$', r'^po-debconf$',
-        r'^man-db$', r'^install-info$', r'^info$', r'^groff-base$',
-        r'^xml-core$', r'^sgml-base$',
-        r'^shim-signed$', r'^grub-efi-amd64-(bin|signed|unsigned)$',
-        r'^grub-pc-bin$', r'^policykit-', r'^polkitd$',
-        r'^systemd-(container|cryptsetup|hwe-hwdb|sysv)$',
-        r'^libnss-systemd$', r'^libpam-', r'^ubuntu-helper-virt-hwe$',
-        r'^ubuntu-report$', r'^whoopsie', r'^apport$',
-        r'^x11-', r'^xserver-xorg-input-', r'^xserver-xorg-video-',
-        r'^openjdk-.*-jre-headless$',
-        r'^autopoint$', r'^gyp$', r'^licensecheck$', r'^debugedit$',
-        r'^dwz$', r'^diffstat$',
-        r'^python3\.\d+-tk$',
-        r'^python3\.\d+-venv$',
-        r'^python3\.\d+-gdbm$',
-    ]
-
-    # Single compiled alternation — one re.search() instead of 60+
-    _SKIP_REGEX = re.compile("|".join(_SKIP_PATTERNS_RAW), re.IGNORECASE)
-
-    _LANG_ECOSYSTEM_LIB_REGEX = re.compile(
-        r'^lib.+-(perl|python\d*|ruby|php)$',
-        re.IGNORECASE
-    )
-
-    _GENERIC_LIB_REGEX = re.compile(
-        r'^(lib|compat-)',
-        re.IGNORECASE
-    )
-
-    _BASE_SYSTEM_REGEX = re.compile(
-        r'^(kernel|filesystem|setup|basesystem|tzdata)',
-        re.IGNORECASE
-    )
-
-    _DEBUG_DEV_REGEX = re.compile(
-        r'(-devel|-debuginfo|-debugsource|-dbg|-dev)$',
-        re.IGNORECASE
-    )
-
-    _LOCALE_REGEX = re.compile(
-        r'(-locale|-lang|-i18n|-l10n|-translations)$',
-        re.IGNORECASE
-    )
-
-    _LANGUAGE_SUBPACKAGE_REGEX = re.compile(
-        r'^(node-|python3?-|perl-|rubygem-|php-|cargo-|go-)',
-        re.IGNORECASE
-    )
-
-    FAMILY_NAME_OVERRIDE = {
-        # =========================
-        # Browsers
-        # =========================
-        "google-chrome-stable": "chrome",
-        "google-chrome-beta": "chrome",
-        "google-chrome-unstable": "chrome",
-        "chromium": "chrome",
-        "chromium-browser": "chrome",
-
-        "brave-browser": "brave browser",
-        "firefox": "firefox",
-
-        # =========================
-        # Editors / IDEs / Dev Tools
-        # =========================
-        "vim": "vim",
-        "vim-tiny": "vim",
-        "vim-gtk3": "vim",
-
-        "nano": "nano",
-        "gedit": "gedit",
-
-        "code": "visual studio code",
-
-        "git": "git",
-
-        "gdb": "gdb",
-
-        "autoconf": "autoconf",
-        "automake": "automake",
-        "make": "make",
-
-        # =========================
-        # GCC Toolchain
-        # =========================
-        "gcc": "gcc",
-        "gcc-13": "gcc",
-        "gcc-14": "gcc",
-        "gcc-15": "gcc",
-
-        "gcc-x86-64-linux-gnu": "gcc",
-        "gcc-13-x86-64-linux-gnu": "gcc",
-        "gcc-14-x86-64-linux-gnu": "gcc",
-        "gcc-15-x86-64-linux-gnu": "gcc",
-
-        "cpp": "gcc",
-        "cpp-13": "gcc",
-        "cpp-14": "gcc",
-        "cpp-15": "gcc",
-
-        "g++": "gcc",
-        "g++-13": "gcc",
-        "g++-14": "gcc",
-        "g++-15": "gcc",
-
-        # =========================
-        # Programming Languages
-        # =========================
-        
-
-      
-
-        "perl": "perl",
-        "perl-base": "perl",
-
-        "nodejs": "nodejs",
-
-        "openjdk-21-jdk": "openjdk",
-        "openjdk-21-jdk-headless": "openjdk",
-        "openjdk-21-jre": "openjdk",
-        "openjdk-21-jre-headless": "openjdk",
-
-        # =========================
-        # Python Libraries
-        # =========================
-        "python3-cryptography": "cryptography",
-        "python3-jwt": "pyjwt",
-        "python3-requests": "requests",
-        "python3-paramiko": "paramiko",
-        "python3-pil": "pillow",
-        "python3-yaml": "pyyaml",
-        "python3-jinja2": "jinja2",
-        "python3-markupsafe": "markupsafe",
-        "python3-urllib3": "urllib3",
-        "python3-setuptools": "setuptools",
-        "python3-pip": "pip",
-        "python3-aiohttp": "aiohttp",
-        "python3-bcrypt": "bcrypt",
-        "python3-pycryptodome": "pycryptodome",
-        "python3-oauthlib": "oauthlib",
-
-        # =========================
-        # Security / Crypto
-        # =========================
-        "openssl": "openssl",
-        "libssl3": "openssl",
-        "libssl3t64": "openssl",
-        "libssl-dev": "openssl",
-
-        "sudo": "sudo",
-
-        "apparmor": "apparmor",
-        "libapparmor1": "apparmor",
-
-        "gnupg": "gnupg",
-        "gpg": "gnupg",
-        "gpg-agent": "gnupg",
-        "gpgv": "gnupg",
-
-        "auditd": "audit",
-
-        # =========================
-        # Networking
-        # =========================
-        "curl": "curl",
-        "libcurl4t64": "curl",
-        "libcurl3t64-gnutls": "curl",
-        "libcurl4-openssl-dev": "curl",
-
-        "wget": "wget",
-
-        "openssh-client": "openssh",
-        "openssh-server": "openssh",
-        "openssh-sftp-server": "openssh",
-
-        "bind9": "bind",
-        "bind9-dnsutils": "bind",
-        "bind9-host": "bind",
-        "bind9-libs": "bind",
-
-        "rsync": "rsync",
-        "rsyslog": "rsyslog",
-
-        "tcpdump": "tcpdump",
-        "nmap": "nmap",
-
-        "openvpn": "openvpn",
-
-        "wpasupplicant": "wpa supplicant",
-
-        "avahi-daemon": "avahi",
-
-        "dnsmasq": "dnsmasq",
-        "dnsmasq-base": "dnsmasq",
-
-        # =========================
-        # Docker / Containers
-        # =========================
-        "docker.io": "docker",
-        "docker-ce": "docker",
-        "docker-ce-cli": "docker",
-        "docker-buildx-plugin": "docker",
-        "docker-compose": "docker",
-        "docker-compose-plugin": "docker",
-        "docker-engine": "docker",
-
-        "containerd": "containerd",
-
-        # =========================
-        # Virtualization / Remote
-        # =========================
-        "virtualbox": "virtualbox",
-        "virtualbox-7.2": "virtualbox",
-
-        "virtualbox-guest-utils": "virtualbox guest additions",
-        "virtualbox-guest-x11": "virtualbox guest additions",
-        "virtualbox-guest-dkms": "virtualbox guest additions",
-
-        "remmina": "remmina",
-
-        # =========================
-        # Printing
-        # =========================
-        "cups": "cups",
-        "cups-daemon": "cups",
-        "cups-client": "cups",
-        "cups-browsed": "cups",
-        "cups-bsd": "cups",
-        "cups-ipp-utils": "cups",
-        "cups-ppdc": "cups",
-
-        "cups-filters": "cups filters",
-        "cups-filters-core-drivers": "cups filters",
-
-        # =========================
-        # GNOME Applications
-        # =========================
-        "gnome-calculator": "calculator",
-        "gnome-clocks": "clocks",
-        "gnome-calendar": "calendar",
-        "gnome-system-monitor": "system monitor",
-        "gnome-terminal": "terminal",
-        "nautilus": "files",
-
-        "eog": "image viewer",
-
-        # =========================
-        # System / Core Utilities
-        # =========================
-        "systemd": "systemd",
-        "systemd-resolved": "systemd",
-        "systemd-timesyncd": "systemd",
-        "systemd-oomd": "systemd",
-
-        "snapd": "snapd",
-
-        "dbus": "dbus",
-        "dbus-daemon": "dbus",
-
-        "bash": "bash",
-
-        "tar": "tar",
-        "grep": "grep",
-        "sed": "sed",
-        "gawk": "gawk",
-
-        "coreutils": "coreutils",
-        "binutils": "binutils",
-
-        "gzip": "gzip",
-
-        "readline-common": "readline",
-        "libreadline8t64": "readline",
-
-        "screen": "screen",
-
-        "strace": "strace",
-
-        "dmidecode": "dmidecode",
-
-        "debugedit": "debugedit",
-
-        "iucode-tool": "iucode-tool",
-
-        "pcmciautils": "pcmciautils",
-
-        # =========================
-        # Compression
-        # =========================
-        "bzip2": "bzip2",
-        "libbz2-1.0": "bzip2",
-
-        "xz": "xz",
-        "xz-utils": "xz",
-        "liblzma5": "xz",
-
-        "zlib1g": "zlib",
-
-        "zip": "zip",
-        "unzip": "unzip",
-
-        "7zip": "7-zip",
-        "p7zip": "7-zip",
-        "p7zip-full": "7-zip",
-
-        # =========================
-        # Multimedia / Libraries
-        # =========================
-        "ghostscript": "ghostscript",
-        "libgs-common": "ghostscript",
-
-        "ffmpeg": "ffmpeg",
-        "libavcodec60": "ffmpeg",
-
-        "imagemagick": "imagemagick",
-
-        "libwebkit2gtk-4.1-0": "webkitgtk",
-        "libjavascriptcoregtk-4.1-0": "webkitgtk",
-        "libjavascriptcoregtk-6.0-1": "webkitgtk",
-
-        "sqlite3": "sqlite",
-        "libsqlite3-0": "sqlite",
-
-        "libssh-4": "libssh",
-
-        # =========================
-        # Misc
-        # =========================
-        "bluez": "bluez",
-
-        "fwupd": "fwupd",
-
-        "mc": "midnight commander",
-
-        "slack": "slack",
-
-        "canonical-livepatch": "canonical livepatch",
-
-        "firmware-updater": "firmware updater",
-
-        "insomnia": "insomnia",
-    }
-
-    DISPLAY_NAME_OVERRIDE = {
-        "aiohttp": "aiohttp",
-        "apparmor": "AppArmor",
-        "audit": "Linux Audit",
-        "autoconf": "GNU Autoconf",
-        "automake": "GNU Automake",
-        "avahi": "Avahi",
-        "bash": "GNU Bash",
-        "bcrypt": "bcrypt",
-        "bind": "BIND",
-        "binutils": "GNU Binutils",
-        "bluez": "BlueZ",
-        "brave browser": "Brave Browser",
-        "bzip2": "bzip2",
-        "calendar": "Calendar",
-        "canonical livepatch": "Canonical Livepatch",
-        "chrome": "Chrome",
-        "clocks": "Clocks",
-        "containerd": "containerd",
-        "coreutils": "GNU Coreutils",
-        "cryptography": "Python Cryptography",
-        "cups": "CUPS",
-        "cups filters": "CUPS Filters",
-        "curl": "curl",
-        "dbus": "D-Bus",
-        "debugedit": "debugedit",
-        "dmidecode": "dmidecode",
-        "dnsmasq": "dnsmasq",
-        "docker": "Docker",
-        "eog": "Image Viewer",
-        "ffmpeg": "FFmpeg",
-        "files": "Files",
-        "firefox": "Firefox",
-        "firmware updater": "Firmware Updater",
-        "fwupd": "fwupd",
-        "gawk": "GNU awk",
-        "gcc": "GCC",
-        "gdb": "GDB",
-        "gedit": "gedit",
-        "git": "Git",
-        "gmp": "GMP",
-        "gnupg": "GnuPG",
-        "gnutls": "GnuTLS",
-        "ghostscript": "Ghostscript",
-        "grep": "GNU grep",
-        "gzip": "GNU gzip",
-        "imagemagick": "ImageMagick",
-        "image viewer": "Image Viewer",
-        "insomnia": "Insomnia",
-        "iucode-tool": "iucode-tool",
-        "jinja2": "Jinja2",
-        "libssh": "libssh",
-        "make": "GNU Make",
-        "markupsafe": "MarkupSafe",
-        "midnight commander": "Midnight Commander",
-        "nano": "GNU nano",
-        "nmap": "Nmap",
-        "nodejs": "Node.js",
-        "oauthlib": "OAuthLib",
-        "openjdk": "OpenJDK",
-        "openssh": "OpenSSH",
-        "openssl": "OpenSSL",
-        "openvpn": "OpenVPN",
-        "paramiko": "Paramiko",
-        "pcmciautils": "pcmciautils",
-        "perl": "Perl",
-        "pip": "pip",
-        "pillow": "Pillow",
-        "pycryptodome": "PyCryptodome",
-        "pyjwt": "PyJWT",
-        "python": "Python",
-        "pyyaml": "PyYAML",
-        "readline": "GNU Readline",
-        "remmina": "Remmina",
-        "requests": "Requests",
-        "rsync": "rsync",
-        "rsyslog": "rsyslog",
-        "screen": "GNU Screen",
-        "sed": "GNU sed",
-        "setuptools": "setuptools",
-        "slack": "Slack",
-        "snapd": "snapd",
-        "sqlite": "SQLite",
-        "strace": "strace",
-        "sudo": "sudo",
-        "system monitor": "System Monitor",
-        "systemd": "systemd",
-        "tar": "GNU tar",
-        "tcpdump": "tcpdump",
-        "terminal": "Terminal",
-        "urllib3": "urllib3",
-        "vim": "Vim",
-        "virtualbox": "VirtualBox",
-        "virtualbox guest additions": "VirtualBox Guest Additions",
-        "visual studio code": "Visual Studio Code",
-        "webkitgtk": "WebKitGTK",
-        "wget": "wget",
-        "wpa supplicant": "wpa_supplicant",
-        "xz": "XZ Utils",
-        "zlib": "zlib",
-        "zip": "zip",
-        "7-zip": "7-Zip",
-        "evince": "Evince"
-    }
-
-    VENDOR_OVERRIDE = {
-        "aiohttp": "aiohttp",
-        "apparmor": "Canonical",
-        "audit": "Red Hat",
-        "autoconf": "GNU",
-        "automake": "GNU",
-        "avahi": "Avahi",
-        "bash": "GNU",
-        "bcrypt": "bcrypt",
-        "bind": "ISC",
-        "binutils": "GNU",
-        "bluez": "BlueZ",
-        "brave browser": "Brave Software",
-        "bzip2": "bzip2",
-        "canonical livepatch": "Canonical",
-        "chrome": "Google",
-        "containerd": "Cloud Native Computing Foundation",
-        "coreutils": "GNU",
-        "cryptography": "Python Cryptography Authority",
-        "cups": "OpenPrinting",
-        "cups filters": "OpenPrinting",
-        "curl": "curl",
-        "dbus": "freedesktop.org",
-        "debugedit": "Fedora Project",
-        "dmidecode": "Nicolas J. A. Bouliane",
-        "dnsmasq": "Simon Kelley",
-        "docker": "Docker Inc.",
-        "ffmpeg": "FFmpeg",
-        "firefox": "Mozilla",
-        "firmware updater": "Canonical",
-        "fwupd": "fwupd",
-        "gawk": "GNU",
-        "gcc": "GNU",
-        "gdb": "GNU",
-        "gedit": "GNOME",
-        "git": "Git",
-        "gnupg": "GnuPG",
-        "gnutls": "GNU",
-        "ghostscript": "Artifex",
-        "grep": "GNU",
-        "gzip": "GNU",
-        "imagemagick": "ImageMagick",
-        "insomnia": "Kong",
-        "iucode-tool": "Intel",
-        "jinja2": "Pallets",
-        "libssh": "libssh",
-        "make": "GNU",
-        "markupsafe": "Pallets",
-        "midnight commander": "Midnight Commander",
-        "nano": "GNU",
-        "nmap": "Nmap",
-        "nodejs": "OpenJS Foundation",
-        "oauthlib": "OAuthLib",
-        "openjdk": "OpenJDK",
-        "openssh": "OpenBSD",
-        "openssl": "OpenSSL",
-        "openvpn": "OpenVPN",
-        "paramiko": "Paramiko",
-        "pcmciautils": "Debian",
-        "perl": "Perl",
-        "pip": "PyPA",
-        "pillow": "Python Pillow",
-        "pycryptodome": "Legrandin",
-        "pyjwt": "Jose Padilla",
-        "python": "Python Software Foundation",
-        "pyyaml": "PyYAML",
-        "readline": "GNU",
-        "remmina": "Remmina",
-        "requests": "Python Requests",
-        "rsync": "rsync",
-        "rsyslog": "Rainer Gerhards",
-        "screen": "GNU",
-        "sed": "GNU",
-        "setuptools": "PyPA",
-        "slack": "Slack Technologies",
-        "snapd": "Canonical",
-        "sqlite": "SQLite",
-        "strace": "strace",
-        "sudo": "Todd C. Miller",
-        "systemd": "systemd",
-        "tar": "GNU",
-        "tcpdump": "tcpdump",
-        "urllib3": "urllib3",
-        "vim": "Vim",
-        "virtualbox": "Oracle",
-        "virtualbox guest additions": "Oracle",
-        "visual studio code": "Microsoft",
-        "webkitgtk": "WebKitGTK",
-        "wget": "GNU",
-        "wpa supplicant": "w1.fi",
-        "xz": "Tukaani",
-        "zlib": "zlib",
-        "zip": "Info-ZIP",
-        "7-zip": "7-Zip",
-    }
-
-    def should_skip(pkg_name: str) -> bool:
-        # CRITICAL: packages explicitly in FAMILY_NAME_OVERRIDE are always allowed
-        if pkg_name.lower() in FAMILY_NAME_OVERRIDE:
-            return False
-        return bool(_SKIP_REGEX.search(pkg_name))
 
     def extract_real_version(version: str) -> str:
         try:
@@ -937,60 +351,6 @@ def get_application_patch_info(os_installation_date):
         """Detect pure git hash versions like 8761a556"""
         return bool(re.fullmatch(r'[0-9a-f]{7,12}', version.strip()))
 
-    # def get_version_from_binary(pkg_name: str) -> str:
-    #     """
-    #     Try common version flags on the binary.
-    #     Binary name = pkg_name in most cases.
-    #     Falls back through flag variations until version found.
-    #     """
-    #     # Special cases where binary name or flag differs from pkg name
-    #     real_user = os.environ.get("SUDO_USER")
-    #     print(real_user)
-    #     SPECIAL_COMMANDS = {
-    #         "code":                ["code", "--version"],
-    #         "canonical-livepatch": ["canonical-livepatch", "version"],
-    #         "snapd":               ["snap", "version"],
-    #            # VSCode family — needs sandbox disabled + temp data dir
-    #         "code":                ["code", "--version"],
-    #         "code-insiders":       ["code-insiders", "--version"],
-
-    #         # Snap tools
-    #         "canonical-livepatch": ["canonical-livepatch", "version"],
-    #         "snapd":               ["snap", "version"],
-
-    #         # Chrome/Chromium family — also needs no-sandbox as root
-    #         "chromium":            ["chromium", "--version", ],
-    #         "google-chrome":       ["google-chrome", "--version"],
-    #     }
-
-    #     # Standard flag variations to try in order
-    #     VERSION_FLAGS = [
-    #         ["--version"],   # most common:  curl --version
-    #     ]
-
-    #     # Use special command if defined
-    #     if pkg_name in SPECIAL_COMMANDS:
-    #         cmds = [SPECIAL_COMMANDS[pkg_name]]
-    #     else:
-    #         # Build commands by combining pkg_name + each flag variation
-    #         cmds = [[pkg_name] + flag for flag in VERSION_FLAGS]
-
-    #     for cmd in cmds:
-    #         print(f"trying command ... {cmd}")
-    #         try:
-    #             result = subprocess.run(
-    #                 cmd, capture_output=True, text=True, timeout=5
-    #             )
-    #             # Check both stdout and stderr (some tools print to stderr e.g. java)
-    #             output = result.stdout or result.stderr
-    #             for line in output.splitlines():
-    #                 line = line.strip()
-    #                 m = re.search(r'(\d+\.\d+[\.\d]*)', line)
-    #                 if m:
-    #                     return m.group(1)
-    #         except  Exception as e:
-    #             print(f"failed command {cmd}: {e}")
-    #     return ""
 
     def get_version_from_binary(pkg_name: str) -> str:
         real_user = os.environ.get("SUDO_USER")
@@ -1107,6 +467,22 @@ def get_application_patch_info(os_installation_date):
         # Step 3: clean whatever snap list gave us
         return extract_snap_version(raw_version) or "1.0"
     
+    def has_numeric_version(version: str) -> bool:
+        """
+        Returns True only for semantic/numeric versions.
+        Examples:
+            1.0
+            1.2.3
+            10.16.2
+            151.0.2-1
+        """
+        if not version:
+            return False
+
+        return bool(
+            re.search(r'\d+\.\d+', version)
+        )
+    
     # ─────────────────────────────────────────────────────────────────────────
     # Main logic
     # ─────────────────────────────────────────────────────────────────────────
@@ -1171,13 +547,13 @@ def get_application_patch_info(os_installation_date):
 
             app_obj = {
                 "name": pkg_name,
-                "version": version_clean,
-                "vendor": vendor,
-                "date": date if date else os_installation_date,
+                # "version": version_clean,
+                # "vendor": vendor,
+                # "date": date if date else os_installation_date,
                 "path": path if path else "Not Found",
-                "signed": signed,
-                "signedBy": signed_by,
-                "authority": authority,
+                # "signed": signed,
+                # "signedBy": signed_by,
+                # "authority": authority,
             }
             applications_versions.append(app_obj)
 
@@ -1200,7 +576,9 @@ def get_application_patch_info(os_installation_date):
             "gnome-46-2404",
             "gtk-common-themes",
             "mesa-2404",
+            "desktop-security-center"
         }
+        
         snap_result = subprocess.run(
             ["snap", "list"],
             capture_output=True, text=True,
@@ -1217,6 +595,8 @@ def get_application_patch_info(os_installation_date):
                     if pkg_name in EXCLUDED_SNAPS:
                         continue
                     version  = resolve_snap_version(pkg_name, entry["version"])
+                    if not has_numeric_version(version):
+                        continue
                     publisher = entry["publisher"] or "Snap Store"
                     # rest of your existing logic unchanged
                     path      = f"/snap/{pkg_name}/current"
